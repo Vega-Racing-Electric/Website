@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang = "en">
+  <head>
+    <meta charset = "utf-8" />
+    <link rel = "icon" href = "%PUBLIC_URL%/icon_vre.png" />
+    <meta name = "viewport" content = "width=device-width, initial-scale=1" />
+    <meta name = "theme-color" content = "#000000" />
+    <meta
+      name = "description"
+      content = "Vega Racing Electric"
+    />
+    <link rel = "apple-touch-icon" href = "%PUBLIC_URL%/android-icon-192x192.png" />
+    <link rel = "stylesheet" href = "https://fonts.googleapis.com/css2?family=PT+Sans:&display=swap" />
+    <link rel = "manifest" href = "%PUBLIC_URL%/manifest.json" />
+    <title>Vega Racing Electric</title>
+    <style>
+      .loading-screen{
+        align-items: center;
+        text-align: center;
+        background: black;
+        position: fixed;
+        top: 0;
+        left: 0;
+        bottom: 0;
+        right: 0;
+        overflow: auto;
+      }
+
+      .preloader{
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+      }
+
+      #root{
+        visibility: hidden;
+      }
+    </style>
+  </head>
+  <body>
+    <noscript>You need to enable JavaScript to run this app.</noscript>
+    <div id = "loader" class = "loading-screen">
+      <img class = "preloader" src = "/videos/Preloader-infinite.gif"/>
+    </div>
+    <div id = "root"></div>
+    <script>
+      window.onload = () => {
+        document.getElementById("loader").style.visibility='hidden';
+        document.getElementById("root").style.visibility='visible';
+      };
+    </script>
+  </body>
+</html>
