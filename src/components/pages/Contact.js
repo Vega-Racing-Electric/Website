@@ -116,7 +116,7 @@ const Contact = () => {
             </p>
 
             <p id="info-heading">
-              <label htmlFor="email">Email Address</label>
+              <label htmlFor="email">Email Addressssssss</label>
               <input
                 type="email"
                 id="email"
