@@ -1,136 +1,157 @@
-import { React, useEffect } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import { FaEnvelope } from 'react-icons/fa';
-import { Button } from '../Button';
 import '../../App.css';
-import { useForm } from 'react-hook-form';
 import emailjs from 'emailjs-com';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.min.css';
 
 const Contact = () => {
+  // 1. Initialize State (This was missing before!)
+  const form = useRef();
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
+  const [message, setMessage] = useState("");
+
+  // Scroll to top on load
   useEffect(() => {
     window.scrollTo(0, 0)
   }, []);
-  const { register, handleSubmit, reset, formState:{errors} } = useForm();
 
-  const toastifySuccess = () => {
-    toast('Form sent!', {
-      position: 'bottom-right',
-      autoClose: 5000,
-      hideProgressBar: true,
-      closeOnClick: true,
-      pauseOnHover: true,
-      draggable: false,
-      className: 'submit-feedback success',
-      toastId: 'notifyToast'
+  // 2. The Email Logic
+  const sendEmail = (e) => {
+    e.preventDefault();
+    setIsSubmitting(true);
+
+    // Make sure your Service ID, Template ID, and User ID are correct here
+    emailjs.sendForm(
+      process.env.REACT_APP_SERVICE_ID,   // OR replace with string "service_xxxxx"
+      process.env.REACT_APP_TEMPLATE_ID,  // OR replace with string "template_xxxxx"
+      form.current,
+      process.env.REACT_APP_USER_ID       // OR replace with string "user_xxxxx"
+    )
+    .then(() => {
+      toast.success('Message sent successfully!', {
+        position: 'bottom-right',
+        autoClose: 5000,
+      });
+      // Reset form
+      setName("");
+      setEmail("");
+      setMessage("");
+    })
+    .catch((error) => {
+      console.log(error.text);
+      toast.error('Failed to send message. Please try again.', {
+        position: 'bottom-right',
+      });
+    })
+    .finally(() => {
+      setIsSubmitting(false);
     });
   };
 
-  const onSubmit = async (data) => {
-    // Send form email
-    try {
-      const templateParams = {
-        name: data.name,
-        email: data.email,
-        subject: data.subject,
-        message: data.message
-      };
-
-      await emailjs.send(
-        process.env.REACT_APP_SERVICE_ID,
-        process.env.REACT_APP_TEMPLATE_ID,
-        templateParams,
-        process.env.REACT_APP_USER_ID
-      );
-
-      reset();
-      toastifySuccess();
-    } catch (e) {
-      console.log(e);
-    }
-  };
-
   return (
-    <div className = 'page'>
+    <div className='page'>
       <h1>Contact Us</h1>
       <p>
-      Thanks for your interest in Vega Racing. For more information, feel free to get in touch and we will get back to you soon!
+        Thanks for your interest in Vega Racing. For more information, feel free to get in touch and we will get back to you soon!
       </p>
-      <div className = 'contact-container'>
-        <div className = 'contact-col'>
+      
+      <div className='contact-container'>
+        {/* LEFT COLUMN: GENERAL INFO */}
+        <div className='contact-col'>
           <h2>GENERAL INFORMATION</h2>
           <h3>Address</h3>
           <p>Vega Racing Electric, PES University Mechanical Lab Block, Outer Ring Road, Banashankari 3rd Stage, Bengaluru, Karnataka - 560085</p>
-          <br/><hr/>
-          <h3>Team</h3>
-          <div className = "contact-details">
+          <br /><hr />
+          
+          <h3>Team Captains</h3>
+          {/* This grid-template-columns: 1fr 1fr in CSS keeps them equal */}
+          <div className="contact-details">
             <div>
-              <p id = 'info-heading'><b>Captain</b></p> 
-              <p id = 'info'>Raj Purohit</p> 
-              <p id = 'info'>+91 7090870459</p>
+              <p id='info-heading'><b>Arnav Rao</b></p>
+              <p id='info'>+91 8310908323</p>
             </div>
             <div>
-              <p id = 'info-heading'><b>Mechanical Head</b></p> 
-              <p id = 'info'>Malvika R</p> 
-              <p id = 'info'>+91 9591918680</p>
-            </div>
-            <div>
-              <p id = 'info-heading'><b>Electrical Head</b></p> 
-              <p id = 'info'>Aditya NG</p> 
-              <p id = 'info'>+91 9035227971</p>
+              <p id='info-heading'><b>Dhruva Meravanige</b></p>
+              <p id='info'>+91 7760971429</p>
             </div>
           </div>
-          <hr/>
+          <hr />
+          
           <h3>Faculty Advisors</h3>
-          <div id = 'faculty-advisors' className = "contact-details">
+          {/* Added inline style to force center alignment for the single advisor */}
+          <div id='faculty-advisors' className="contact-details" style={{display: 'flex', justifyContent: 'center', textAlign: 'center'}}>
             <div>
-              <p id = 'info-heading'><b>Mechanical</b></p>  
-              <p id = 'info'>Prof. Sharanbassappa S Patil</p>
-              <p id = 'info'>sspatil@pes.edu</p>
-            </div>
-            <div>
-              <p id = 'info-heading'><b>Electrical</b></p>
-              <p id = 'info'>Dr. Rex Joseph</p>  
-              <p id = 'info'>rexjoseph@pes.edu</p>
+              <p id='info-heading'><b>Dr. Rex Joseph</b></p>
+              <p id='info'>rexjoseph@pes.edu</p>
             </div>
           </div>
-          <hr/><br/>
-          <div className = 'contact-email'><a className = 'contact-email' href = "mailto:vegaracingelectric@pes.edu"><FaEnvelope className = "fa-symbol"/> vegaracingelectric@pes.edu</a></div>
+          <hr /><br />
+          
+          <div className='contact-email'>
+            <a className='contact-email' href="mailto:vegaracingelectric@pes.edu">
+              <FaEnvelope className="fa-symbol" /> vegaracingelectric@pes.edu
+            </a>
+          </div>
         </div>
-        
-        <div className = 'contact-col' id = "contact-form">
-          {/* <h2>LEAVE US A MESSAGE</h2> */}
 
-          {/* <form action="https://docs.google.com/forms/u/0/d/1skTyAwfTTBzpdGvadEd26zvggLVhHl80w2ieMf8eC80/prefill"
-                target="_self"
-                methd="POST"
+        {/* RIGHT COLUMN: CONTACT FORM */}
+        <div className='contact-col' id="contact-form">
+          <h2>LEAVE US A MESSAGE</h2>
 
-          >
-            <p>
-              <label>Name</label>
-              <input required = "required" type = "text" name="entry.480218929" placeholder = "Name"/>
+          <form ref={form} onSubmit={sendEmail}>
+            <p id="info-heading">
+              <label htmlFor="name">Name</label>
+              <input
+                type="text"
+                id="name"
+                name="name" // This 'name' attribute is what EmailJS looks for in the template
+                required
+                placeholder="Your Name"
+                value={name}
+                onChange={(e) => setName(e.target.value)}
+              />
             </p>
-            <p>
-              <label>Institution</label>
-              <input required = "required" type = "text" name="entry.142881535" placeholder = "Company / Institution"/>
+
+            <p id="info-heading">
+              <label htmlFor="email">Email Address</label>
+              <input
+                type="email"
+                id="email"
+                name="email"
+                required
+                placeholder="yourname@company.domain"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+              />
             </p>
-            <p>
-              <label>Email Address</label>
-              <input required = "required" type = "email" name="entry.915730125" placeholder = "Email ID"/>
+
+            <p className="full" id="info-heading">
+              <label htmlFor="message">Message</label>
+              <textarea
+                id="message"
+                name="message"
+                rows={4}
+                required
+                placeholder="Drop us a message!"
+                value={message}
+                onChange={(e) => setMessage(e.target.value)}
+              ></textarea>
             </p>
-            <p>
-              <label>Phone Number</label>
-              <input required = "required" type = "text" name="entry.2141869491" placeholder = "Phone Number"/>
-            </p>
-            <p className = "full">
-              <label>Message</label>
-              <textarea name="entry.1367359104" rows = "4" placeholder = "Enter your message..."></textarea>
-            </p>
-            <div type = "submit" className = "center">
-              <Button buttonStyle = 'btn--outline-full-width'>Submit</Button>
+
+            <div className="center">
+              <button
+                type="submit"
+                className="btn--outline-full-width"
+                disabled={isSubmitting}
+                style={{ opacity: isSubmitting ? 0.5 : 1, cursor: isSubmitting ? 'not-allowed' : 'pointer' }}
+              >
+                {isSubmitting ? "Sending..." : "Submit"}
+              </button>
             </div>
-          </form> */}
-          <iframe src="https://docs.google.com/forms/d/e/1FAIpQLScqhVW5kitVQVf4B7kwpsRAmojgmXi_hi_6tW1I3DwwETuDqg/viewform?embedded=true" >Loading…</iframe>
+          </form>
         </div>
       </div>
       <ToastContainer />
