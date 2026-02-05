@@ -3,6 +3,7 @@
 - Front End: React.js
 - Backend: Node.js
 ## Directory Structure
+```
 Repo  
 ├── public/  
 │   ├── all_of_the_images_used_over_various_browsers  
@@ -38,6 +39,7 @@ Repo
             ├── Research  
             ├── Sponsors  
             └── Team  
+```
 ## How to run
 1. Clone the repo.
 2. Pull the repo.
