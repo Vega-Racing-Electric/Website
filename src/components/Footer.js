@@ -29,10 +29,10 @@ function Footer() {
       
       <a 
         className = "dev-contact" 
-        href = 'https://in.linkedin.com/in/dhruvalpb'
+        href = 'https://www.linkedin.com/company/vega-racing-electric/'
         target = '_blank' rel = "noreferrer"
       >
-        Developed by Dhruval PB
+        Developed by Web Dev team @VRE
       </a>
       
       <section className = 'social-media'>
@@ -50,7 +50,7 @@ function Footer() {
             </a>
           </div>
 
-          <small className = 'footer-col website-rights'>VRE © 2017</small>
+          <small className = 'footer-col website-rights'>VRE © 2026</small>
           
           <div className = 'footer-col social-icons'>
             <a
