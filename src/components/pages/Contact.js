@@ -23,32 +23,39 @@ const Contact = () => {
     e.preventDefault();
     setIsSubmitting(true);
 
-    // Make sure your Service ID, Template ID, and User ID are correct here
-    emailjs.sendForm(
-      process.env.REACT_APP_SERVICE_ID,   // OR replace with string "service_xxxxx"
-      process.env.REACT_APP_TEMPLATE_ID,  // OR replace with string "template_xxxxx"
+    // 1. Send to the Team (Original Template)
+    const sendToTeam = emailjs.sendForm(
+      process.env.REACT_APP_SERVICE_ID,
+      process.env.REACT_APP_TEMPLATE_ID, // Your admin template
       form.current,
-      process.env.REACT_APP_USER_ID       // OR replace with string "user_xxxxx"
-    )
-    .then(() => {
-      toast.success('Message sent successfully!', {
-        position: 'bottom-right',
-        autoClose: 5000,
+      process.env.REACT_APP_USER_ID
+    );
+
+    // 2. Send to the User (New Auto-Reply Template)
+    const sendToUser = emailjs.sendForm(
+      process.env.REACT_APP_SERVICE_ID,
+      "template_confirmation_id", // Replace with your NEW Template ID
+      form.current,
+      process.env.REACT_APP_USER_ID
+    );
+
+    // Execute both
+    Promise.all([sendToTeam, sendToUser])
+      .then(() => {
+        toast.success('Message sent and confirmation delivered!', {
+          position: 'bottom-right',
+        });
+        setName("");
+        setEmail("");
+        setMessage("");
+      })
+      .catch((error) => {
+        console.error("Email Error:", error);
+        toast.error('Something went wrong.');
+      })
+      .finally(() => {
+        setIsSubmitting(false);
       });
-      // Reset form
-      setName("");
-      setEmail("");
-      setMessage("");
-    })
-    .catch((error) => {
-      console.log(error.text);
-      toast.error('Failed to send message. Please try again.', {
-        position: 'bottom-right',
-      });
-    })
-    .finally(() => {
-      setIsSubmitting(false);
-    });
   };
 
   return (
