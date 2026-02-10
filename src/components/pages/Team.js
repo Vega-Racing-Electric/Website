@@ -16,7 +16,7 @@ export default function Team() {
     <div className="team">
       <h1>Meet the team</h1>
 
-      {/* UPDATED: Year Dropdown */}
+      {/* Year Dropdown */}
       <div className="team-year-selector">
         <label htmlFor="year-select">Select Year: </label>
         <select 
@@ -38,7 +38,7 @@ export default function Team() {
       
       <h1> Team Structure </h1>
       <div className="team-container">
-         {/* ... (Rest of your component remains exactly the same) ... */}
+         {/* Each team column can be a separate component if needed, but for simplicity, they are kept here. */}
          <div className="team-column" >
             <FaMicrochip className="team-structure"></FaMicrochip>
             <h2><b>Electrical</b></h2>
