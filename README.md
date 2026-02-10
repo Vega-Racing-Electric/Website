@@ -17,16 +17,20 @@ The official web platform for **Vega Racing Electric**, showcasing our team's en
 
 ```text
 vega-racing-website/
-├── public/                 # Static assets
+├── public/                 # Static assets and User side errors
+│   ├── index.html          # For the scenario where there are browser problems
+│   ├── robots.txt          # To avoid spam bots
 │   ├── images/             # General UI images
 │   └── videos/             # Site background/promotional videos
 └── src/
-    ├── components/         # Reusable UI elements
-    │   ├── pages/          # Full page layouts (Home, Team, etc.)
-    │   └── common/         # Buttons, Cards, Navbars
-    ├── assets/             # Internal images and style files
-    ├── App.js              # Main application entry
-    └── index.js            # DOM rendering
+    ├── components/         # Reusable UI elements like web pages and Buttons, Cards, Navbars, Footer, etc
+    │   └── pages/          # Full page layouts (Home, Team, Sponsors, Research, Achievements, Contact)                   
+    ├── images/             # Internal images and style files
+    ├── App.js
+    ├── App.css
+    ├── Index.css
+    ├── Test_files
+    └── index.js            
 
 ```
 
