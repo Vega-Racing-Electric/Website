@@ -6,10 +6,7 @@ export default function Team() {
   const currentYear = new Date().getFullYear();
   const [selectedYear, setSelectedYear] = useState(currentYear);
 
-  const years = [];
-  for (let i = 2017; i <= currentYear; i++) {
-    years.push(i);
-  }
+  const years = [2017, 2018, 2019, 2020, 2021, 2022, 2023, 2024, 2025, 2026];
 
   useEffect(() => {
     window.scrollTo(0, 0)
