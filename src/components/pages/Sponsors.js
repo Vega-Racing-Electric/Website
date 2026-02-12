@@ -6,15 +6,17 @@ export default function Sponsors() {
     window.scrollTo(0, 0)
   }, []);
   const photos = [
-    {src: '/images/Sponsors/Orion.jpg'},
-    {src: '/images/Sponsors/3M.png'},
-    {src: '/images/Sponsors/TE.png'},
+    
+    
     {src: '/images/Sponsors/Gremot.png'},
     {src: '/images/Sponsors/Rajamane.png'},
-    {src: '/images/Sponsors/Sirius.jpg'},
-    {src: '/images/Sponsors/Bender.jpg'},
-    {src: '/images/Sponsors/Altair.png'}, 
-    {src: '/images/Sponsors/WE.png'}
+    {src: '/images/Sponsors/BenderNew.png'},
+    {src: '/images/Sponsors/R3Automation.png'}
+    {src: '/images/Sponsors/magod.png'}
+    {src: '/images/Sponsors/precesionForge.png'}
+    {src: '/images/Sponsors/revaProjectEngineers.png'}
+    {src: '/images/Sponsors/copperpilot.png'}
+    {src: '/images/Sponsors/DSSolidworks.png'}
   ];
    
   const sponsorLogos = photos.map((element, index) => {return <img alt = "" src = {element.src} key = {index}/>});
