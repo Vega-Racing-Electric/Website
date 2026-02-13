@@ -3,7 +3,7 @@
 
 # Vega Racing Electric
 
-The official web platform for **Vega Racing Electric**, showcasing our team's engineering achievements, research, and sponsor network.
+The official website for **Vega Racing Electric**, showcasing our team's engineering achievements, research, and sponsor network.
 
 ## Tech Stack
 
@@ -13,7 +13,7 @@ The official web platform for **Vega Racing Electric**, showcasing our team's en
 
 ---
 
-##  Project Structure
+##  Directory Structure
 
 ```text
 vega-racing-website/
@@ -62,3 +62,5 @@ npm install
 set NODE_OPTIONS=--openssl-legacy-provider && npm start
 
 ```
+## Heads Up
+The keys to run the contact us form in the contact us page are stored in github secret. To try them on your own device, use your own keys, DO NOT PUSH THEM INTO THE REPO. Contact the heads for access of the VRE mail id (vegaracingelectric@pes.edu) to work on the keys, eg., updating the mail template.

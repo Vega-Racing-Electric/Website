@@ -5,8 +5,13 @@ import emailjs from 'emailjs-com';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.min.css';
 
+// Contact Us Form, custom made for better aesthetics.
+/* 
+Uses EmailJS to send mail to 
+1) The Team - giving the details of the sender and their message
+2) The User - a confirmation mail to the sender.
+*/
 const Contact = () => {
-  // 1. Initialize State (This was missing before!)
   const form = useRef();
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [name, setName] = useState("");
@@ -18,23 +23,23 @@ const Contact = () => {
     window.scrollTo(0, 0)
   }, []);
 
-  // 2. The Email Logic
+  // The Emailing the form details Logic
   const sendEmail = (e) => {
     e.preventDefault();
     setIsSubmitting(true);
 
-    // 1. Send to the Team (Original Template)
+    // Send to the Team 
     const sendToTeam = emailjs.sendForm(
       process.env.REACT_APP_SERVICE_ID,
-      process.env.REACT_APP_TEMPLATE_ID, // Your admin template
+      process.env.REACT_APP_TEMPLATE_ID, 
       form.current,
-      process.env.REACT_APP_USER_ID
+      process.env.REACT_APP_USER_ID 
     );
 
-    // 2. Send to the User (New Auto-Reply Template)
+    // Send to the User 
     const sendToUser = emailjs.sendForm(
       process.env.REACT_APP_SERVICE_ID,
-      "template_confirmation_id", // Replace with your NEW Template ID
+      process.env.REACT_APP_CONFIRMATION_TEMPLATE_ID,
       form.current,
       process.env.REACT_APP_USER_ID
     );
@@ -67,7 +72,7 @@ const Contact = () => {
       
       <div className='contact-container'>
 
-        {/* LEFT COLUMN: CONTACT FORM */}
+        {/* LEFT COLUMN: Custom CONTACT FORM */}
         <div className='contact-col' id="contact-form">
           <h2>LEAVE US A MESSAGE</h2>
 
@@ -132,7 +137,6 @@ const Contact = () => {
           <br /><hr />
           
           <h3>Team Captains</h3>
-          {/* This grid-template-columns: 1fr 1fr in CSS keeps them equal */}
           <div className="contact-details">
             <div>
               <p id='info-heading'><b>Arnav Rao</b></p>
@@ -146,7 +150,6 @@ const Contact = () => {
           <hr />
           
           <h3>Faculty Advisors</h3>
-          {/* Added inline style to force center alignment for the single advisor */}
           <div id='faculty-advisors' className="contact-details" style={{display: 'flex', justifyContent: 'center', textAlign: 'center'}}>
             <div>
               <p id='info-heading'><b>Dr. Rex Joseph</b></p>
