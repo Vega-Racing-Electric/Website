@@ -66,45 +66,8 @@ const Contact = () => {
       </p>
       
       <div className='contact-container'>
-        {/* LEFT COLUMN: GENERAL INFO */}
-        <div className='contact-col'>
-          <h2>GENERAL INFORMATION</h2>
-          <h3>Address</h3>
-          <p>Vega Racing Electric, PES University Mechanical Lab Block, Outer Ring Road, Banashankari 3rd Stage, Bengaluru, Karnataka - 560085</p>
-          <br /><hr />
-          
-          <h3>Team Captains</h3>
-          {/* This grid-template-columns: 1fr 1fr in CSS keeps them equal */}
-          <div className="contact-details">
-            <div>
-              <p id='info-heading'><b>Arnav Rao</b></p>
-              <p id='info'>+91 8310908323</p>
-            </div>
-            <div>
-              <p id='info-heading'><b>Dhruva Meravanige</b></p>
-              <p id='info'>+91 7760971429</p>
-            </div>
-          </div>
-          <hr />
-          
-          <h3>Faculty Advisors</h3>
-          {/* Added inline style to force center alignment for the single advisor */}
-          <div id='faculty-advisors' className="contact-details" style={{display: 'flex', justifyContent: 'center', textAlign: 'center'}}>
-            <div>
-              <p id='info-heading'><b>Dr. Rex Joseph</b></p>
-              <p id='info'>rexjoseph@pes.edu</p>
-            </div>
-          </div>
-          <hr /><br />
-          
-          <div className='contact-email'>
-            <a className='contact-email' href="mailto:vegaracingelectric@pes.edu">
-              <FaEnvelope className="fa-symbol" /> vegaracingelectric@pes.edu
-            </a>
-          </div>
-        </div>
 
-        {/* RIGHT COLUMN: CONTACT FORM */}
+        {/* LEFT COLUMN: CONTACT FORM */}
         <div className='contact-col' id="contact-form">
           <h2>LEAVE US A MESSAGE</h2>
 
@@ -114,7 +77,7 @@ const Contact = () => {
               <input
                 type="text"
                 id="name"
-                name="name" // This 'name' attribute is what EmailJS looks for in the template
+                name="name" 
                 required
                 placeholder="Your Name"
                 value={name}
@@ -160,6 +123,45 @@ const Contact = () => {
             </div>
           </form>
         </div>
+
+        {/* RIGHT COLUMN: GENERAL INFO */}
+        <div className='contact-col'>
+          <h2>GENERAL INFORMATION</h2>
+          <h3>Address</h3>
+          <p>Vega Racing Electric, PES University Mechanical Lab Block, Outer Ring Road, Banashankari 3rd Stage, Bengaluru, Karnataka - 560085</p>
+          <br /><hr />
+          
+          <h3>Team Captains</h3>
+          {/* This grid-template-columns: 1fr 1fr in CSS keeps them equal */}
+          <div className="contact-details">
+            <div>
+              <p id='info-heading'><b>Arnav Rao</b></p>
+              <p id='info'>+91 8310908323</p>
+            </div>
+            <div>
+              <p id='info-heading'><b>Dhruva Meravanige</b></p>
+              <p id='info'>+91 7760971429</p>
+            </div>
+          </div>
+          <hr />
+          
+          <h3>Faculty Advisors</h3>
+          {/* Added inline style to force center alignment for the single advisor */}
+          <div id='faculty-advisors' className="contact-details" style={{display: 'flex', justifyContent: 'center', textAlign: 'center'}}>
+            <div>
+              <p id='info-heading'><b>Dr. Rex Joseph</b></p>
+              <p id='info'>rexjoseph@pes.edu</p>
+            </div>
+          </div>
+          <hr /><br />
+          
+          <div className='contact-email'>
+            <a className='contact-email' href="mailto:vegaracingelectric@pes.edu">
+              <FaEnvelope className="fa-symbol" /> vegaracingelectric@pes.edu
+            </a>
+          </div>
+        </div>
+
       </div>
       <ToastContainer />
     </div>
