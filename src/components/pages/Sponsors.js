@@ -6,7 +6,6 @@ export default function Sponsors() {
     window.scrollTo(0, 0)
   }, []);
   const photos = [
-    {src: '/images/Sponsors/revaProjectEngineers.png'},
     {src: '/images/Sponsors/Gremot.png'},
     {src: '/images/Sponsors/Rajamane.png'},
     {src: '/images/Sponsors/BenderNew.png'},
