@@ -2,7 +2,7 @@ import React, {useRef} from 'react';
 import { FaRegPlayCircle } from 'react-icons/fa';
 import '../App.css';
 import { Button } from './Button';
-
+ 
 function HeroSection() {
   const [showResults, setShowResults] = React.useState(true)
   const vidRef = useRef(null);
@@ -16,7 +16,7 @@ function HeroSection() {
   return (
     <div className = 'hero-container'>
       <video ref = {vidRef} onEnded = {unhide}>
-        <source src = '/videos/Drift.mp4' muted />
+        <source src = '/videos/DriveBy.mp4' muted /> 
       </video>    
       {showResults  && 
       (<>

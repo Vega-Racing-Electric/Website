@@ -9,10 +9,11 @@ export default function Achievements() {
   }, []);
   
   const FG = <>
-    Runner Up in Formula Green Concept, 2021 <br/>
-    2<sup>nd</sup> in Design Event <br/>
-    3<sup>rd</sup> in Cost Event <br/>
-    Best Team Captain - Raj Purohit
+    Formula Bharat, 2025 <br/>
+    1<sup>st</sup> in Bangalore <br/>
+    3<sup>rd</sup> in South India <br/>
+    15<sup>th</sup> in India <br/>
+    The first-ever first-year team to successfully clear the Accumulator Technical Inspection in Formula Bharat.
   </>;
   
   return (
@@ -27,15 +28,25 @@ export default function Achievements() {
           <div className = 'cards-wrapper'>
             <ul className = 'cards'>
               <Card
-                src = 'images/Achievements/FormulaGreen.jpg'
+                src = 'images/Achievements/FormulaBharatLogo.jpg'
                 heading = {FG}
-                label = 'Formula Green Concept 2021 (Season 6)'
+                label = 'Formula Bharat 2025'
               />
                 </ul>
                 <ul className = 'cards'>
               <Card
                 src = 'images/Achievements/FormulaBharatLogo.jpg'
-                heading = 'Obtained 9th place in Formula Bharath, 2020'
+                heading = 'Obtained 4th place Overall, 2022'
+                label = 'Formula Bharat 2022'
+              />
+              <Card
+                src = 'images/Achievements/FormulaBharatLogo.jpg'
+                heading = 'Runner up in Design Event and 3rd in Cost Event, 2021'
+                label = 'Formula Green 2021'
+              />
+              <Card
+                src = 'images/Achievements/FormulaBharatLogo.jpg'
+                heading = 'Obtained 9th place in Formula Bharat, 2020'
                 label = 'Formula Bharat 2020'
               />
               <Card
