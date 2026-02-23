@@ -55,7 +55,7 @@ Follow these steps to get a local copy up and running.
 
 1. **Clone the repository**
 ```bash
-git clone https://github.com/your-username/vega-racing-electric.git
+git clone https://github.com/Vega-Racing-Electric/vega-racing-electric.git
 cd vega-racing-electric
 ```
 2. **Install dependencies**
