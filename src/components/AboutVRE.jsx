@@ -8,7 +8,7 @@ const AboutVRE = () => {
                 <div className="w-full md:w-1/3 flex justify-center">
                     <div className="relative">
                         <img
-                            src="/icon.png"
+                            src={`${import.meta.env.BASE_URL}icon.png`}
                             alt="VRE Circle Logo"
                             className="w-64 h-64 md:w-80 md:h-80 object-contain drop-shadow-[0_0_30px_rgba(230,57,70,0.3)]"
                         />

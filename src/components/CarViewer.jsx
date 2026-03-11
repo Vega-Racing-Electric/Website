@@ -30,7 +30,7 @@ class ErrorBoundary extends Component {
 }
 
 const CarModel = () => {
-    const { scene } = useGLTF('/car.glb');
+    const { scene } = useGLTF(`${import.meta.env.BASE_URL}car.glb`);
 
     // Center and scale the model automatically if needed
     //scene.scale.set(1, 1, 1);

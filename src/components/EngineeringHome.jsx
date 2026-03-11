@@ -8,7 +8,7 @@ const EngineeringHome = () => {
                 <div className="w-full md:w-1/2 flex justify-center">
                     <div className="relative overflow-hidden rounded-lg shadow-[0_0_50px_rgba(230,57,70,0.4)] transition-transform duration-500 hover:scale-105">
                         <img
-                            src="/images/Research3.png"
+                            src={`${import.meta.env.BASE_URL}images/Research3.png`}
                             alt="Engineering Research PCB"
                             className="w-full h-auto object-cover rounded-sm filter brightness-110"
                         />

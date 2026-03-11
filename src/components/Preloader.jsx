@@ -60,7 +60,7 @@ const Preloader = ({ onLoaded }) => {
       <div className="loader-content absolute inset-0 flex flex-col items-center justify-center pointer-events-auto z-10">
         <div className="relative mb-12">
           <div className="w-auto h-32 md:h-48 flex items-center justify-center">
-            <img src="/videos/Preloader-infinite.gif" alt="VRE Logo Pulse" className="h-full w-auto object-contain" />
+            <img src={`${import.meta.env.BASE_URL}videos/Preloader-infinite.gif`} alt="VRE Logo Pulse" className="h-full w-auto object-contain" />
           </div>
         </div>
 
