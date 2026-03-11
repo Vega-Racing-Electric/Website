@@ -1,85 +1,53 @@
+# Vega Racing Electric - Website Revamp
 
----
-
-# Vega Racing Electric
-
-The official website for **Vega Racing Electric**, showcasing our team's engineering achievements, research, and sponsor network.
+Welcome to the premium VRE website revamp. This project has been migrated to **Vite** for blazing fast performance and uses a modern Formula Student aesthetic.
 
 ## Tech Stack
-
-* **Frontend:** React.js
-* **Client Side mail service:** EmailJS
-* **Styling:** CSS3
-* **Package Manager:** Yarn
-
----
-
-##  Directory Structure
-
-```text
-vega-racing-website/
-├── .env                    # to store YOUR keys.
-├── .gitignore              # to make sure stuff not required is not tracked by git.
-├── README.md               # You are reading this right now.
-├── package.json            # Yarn stuff that remembers all the dependencies to be installed.
-├── yarn.lock               # Yarn stuff
-├── public/                 # Static assets and User side errors
-│   ├── index.html          # For the scenario where there are browser problems
-│   ├── robots.txt          # To avoid spam bots
-│   ├── images/             # General UI images
-│   └── videos/             # Site background/promotional videos
-└── src/                    # Source code for the website. The backbone.
-    ├── components/         # Reusable UI elements like web pages and Buttons, Cards, Navbars, Footer, etc
-    │   └── pages/          # Full page layouts (Home, Team, Sponsors, Research, Achievements, Contact)                   
-    ├── images/             # Internal images and style files
-    ├── App.js              # Brings all the pages together
-    ├── App.css             # Aesthetic changes
-    ├── Index.css
-    ├── Test_files
-    └── index.js            
-
-```
-
----
+- **Framework**: React 18 + Vite
+- **3D Engine**: Three.js (@react-three/fiber & @react-three/drei)
+- **Animations**: GSAP + ScrollTrigger
+- **Styling**: Tailwind CSS
+- **Icons**: Lucide React
 
 ## Getting Started
+1. Install dependencies:
+   ```bash
+   npm install
+   ```
+2. Run development server:
+   ```bash
+   npm run dev
+   ```
+3. Build for production:
+   ```bash
+   npm run build
+   ```
 
-Follow these steps to get a local copy up and running.
+## Customization
+- **Technical Specs**: Edit `src/data/specs.js`
+- **Competition History**: Edit `src/data/achievements.js`
+- **Engineering Subsystems**: Edit `src/data/subsystems.js`
+- **Team Members**: Edit `src/data/team.js`
+- **Sponsors**: Edit `src/data/sponsors.js`
+- **Colors & Fonts**: Modify `tailwind.config.js` and `src/index.css`
 
-### Prerequisites
+## 3D Car Model
+The 3D car is currently a placeholder box. 
+To replace it:
+1. Place your `car.glb` file in the `/public/` directory.
+2. Update `src/components/CarViewer.jsx` to load the model instead of the `CarPlaceholder` component.
+   ```jsx
+   const { scene } = useGLTF('/car.glb')
+   return <primitive object={scene} />
+   ```
 
-* **Node.js** (LTS version recommended)
-* **yarn** (if you have node, you have npm, run: "npm install --global yarn")
-
-### Installation & Setup
-
-1. **Clone the repository**
-```bash
-git clone https://github.com/Vega-Racing-Electric/Website.git
-cd Website
-```
-2. **Install dependencies**
-```bash
-yarn install
-
-```
-3. Configure Environment Variables
-Create a file named ```.env``` in the root directory, same level as package.json, Add the following keys to it
-```
-REACT_APP_SERVICE_ID=service...
-REACT_APP_TEMPLATE_ID=template...
-REACT_APP_CONFIRMATION_TEMPLATE_ID=template...
-REACT_APP_USER_ID=...
-```
-4. **Start the development server**
-- For Mac/Linux/PowerShell
-```bash
-export NODE_OPTIONS=--openssl-legacy-provider && yarn start
-```
-- For windows CMD
-```bash
-set NODE_OPTIONS=--openssl-legacy-provider && yarn start
-
-```
-## Heads Up
-The keys to run the contact us form in the contact us page are stored in github secret. To try them on your own device, use your own keys, DO NOT PUSH THOSE KEYS INTO THE REPO. Contact the heads for access of the VRE mail id (vegaracingelectric@pes.edu) to work on the keys, eg., updating the mail template. 
+## Design Principles
+- **Aesthetic**: Dark, cinematic, high-performance.
+- **Color Palette**: 
+  - Background: #0A0A0A
+  - Accent: #E63946 (VRE Red)
+  - Text: #FFFFFF / #888888
+- **Typography**: 
+  - Headings: Orbitron
+  - Body: IBM Plex Sans
+  - Data: IBM Plex Mono
