@@ -1,24 +1,40 @@
 import React, { useState } from 'react';
 import { Mail, MapPin, Phone, Send } from 'lucide-react';
-
-// You will need to setup emailjs to use this, but the UI is ready
-// import emailjs from 'emailjs-com';
+import emailjs from '@emailjs/browser';
 
 const Contact = () => {
     const [isSubmitting, setIsSubmitting] = useState(false);
     const [formData, setFormData] = useState({ name: '', email: '', message: '' });
     const [status, setStatus] = useState(null);
 
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault();
         setIsSubmitting(true);
-        // Fake sending animation for now until env variables are restored
-        setTimeout(() => {
-            setIsSubmitting(false);
+        setStatus(null);
+
+        const serviceId = import.meta.env.VITE_EMAILJS_SERVICE_ID;
+        const templateId = import.meta.env.VITE_EMAILJS_TEMPLATE_ID;
+        const publicKey = import.meta.env.VITE_EMAILJS_PUBLIC_KEY;
+
+        try {
+            const templateParams = {
+                from_name: formData.name,
+                from_email: formData.email,
+                message: formData.message,
+                to_name: 'Vega Racing Electric',
+            };
+
+            await emailjs.send(serviceId, templateId, templateParams, publicKey);
+            
             setStatus("Message sent successfully!");
             setFormData({ name: '', email: '', message: '' });
             setTimeout(() => setStatus(null), 5000);
-        }, 1500);
+        } catch (error) {
+            console.error('EmailJS Error:', error);
+            setStatus("Failed to send message. Please try again later.");
+        } finally {
+            setIsSubmitting(false);
+        }
     };
 
     return (

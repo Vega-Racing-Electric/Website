@@ -11,6 +11,7 @@
     "sync-team": "node sync-team.js"
   },
   "dependencies": {
+    "@emailjs/browser": "^4.4.1",
     "@react-three/drei": "^9.122.0",
     "@react-three/fiber": "^8.0.0",
     "clsx": "^2.1.0",
