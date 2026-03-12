@@ -1,9 +1,8 @@
-import React, { useState, useRef, useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Mail, MapPin, Phone, Send } from 'lucide-react';
 import emailjs from '@emailjs/browser';
 
 const Contact = () => {
-    const form = useRef();
     const [isSubmitting, setIsSubmitting] = useState(false);
     const [formData, setFormData] = useState({ name: '', email: '', message: '' });
     const [status, setStatus] = useState(null);
@@ -22,8 +21,14 @@ const Contact = () => {
         const confirmationTemplateId = import.meta.env.VITE_EMAILJS_CONFIRMATION_TEMPLATE_ID;
         const publicKey = import.meta.env.VITE_EMAILJS_PUBLIC_KEY;
 
-        const sendToTeam = emailjs.sendForm(serviceId, templateId, form.current, publicKey);
-        const sendToUser = emailjs.sendForm(serviceId, confirmationTemplateId, form.current, publicKey);
+        const templateParams = {
+            name: formData.name,
+            email: formData.email,
+            message: formData.message,
+        };
+
+        const sendToTeam = emailjs.send(serviceId, templateId, templateParams, publicKey);
+        const sendToUser = emailjs.send(serviceId, confirmationTemplateId, templateParams, publicKey);
 
         Promise.all([sendToTeam, sendToUser])
             .then(() => {
@@ -58,7 +63,7 @@ const Contact = () => {
                         <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-primary to-transparent"></div>
                         <h3 className="font-orbitron font-bold text-xl mb-8 uppercase tracking-widest">Send a Message</h3>
 
-                        <form ref={form} onSubmit={sendEmail} className="flex flex-col gap-6">
+                        <form onSubmit={sendEmail} className="flex flex-col gap-6">
                             <div className="flex flex-col gap-2">
                                 <label htmlFor="name" className="font-mono text-xs text-muted uppercase tracking-widest">Name</label>
                                 <input
@@ -180,7 +185,6 @@ const Contact = () => {
                             </div>
                         </div>
 
-                        
                         <a
                             href="mailto:vegaracingelectric@pes.edu"
                             className="p-6 border border-primary/20 bg-primary/5 rounded-sm flex items-center justify-between group hover:bg-primary/10 transition-colors"
