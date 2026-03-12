@@ -9,10 +9,10 @@ export default function Sponsors() {
     {src: '/images/Sponsors/Gremot.png'},
     {src: '/images/Sponsors/Rajamane.png'},
     {src: '/images/Sponsors/BenderNew.png'},
-    {src: '/images/Sponsors/R3Automation.png'},
     {src: '/images/Sponsors/magod.png'},
     {src: '/images/Sponsors/precesionForge.png'},
     {src: '/images/Sponsors/copperpilot.png'},
+    {src: '/images/Sponsors/R3Automation.png'},
     {src: '/images/Sponsors/DSSolidworks.png'}
   ];
    
