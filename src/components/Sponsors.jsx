@@ -6,7 +6,7 @@ const Sponsors = () => {
     return (
         <div className="py-24 bg-surface relative overflow-hidden">
             <div className="container mx-auto px-6 mb-16 text-center">
-                <h2 className="text-4xl md:text-5xl font-black italic uppercase tracking-tighter">Our Partners</h2>
+                <h2 className="text-4xl md:text-5xl font-black italic uppercase tracking-tighter">Our Sponsors</h2>
                 <div className="w-20 h-1 bg-primary mx-auto mt-4"></div>
             </div>
 

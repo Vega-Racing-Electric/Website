@@ -74,9 +74,83 @@ const Team = () => {
         );
     }, [filteredTeam]);
 
+    // Faculty Advisor data
+    const facultyAdvisor = {
+        name: "Dr. Rex Joseph",
+        role: "Faculty Advisor",
+        image: "/images/Team/drrex.jpg",
+        description: "Mentor for VRE",
+    };
+
     return (
         <div className="py-24 bg-background min-h-screen">
             <div className="container mx-auto px-6">
+
+                {/* Faculty Advisor Section */}
+                <div className="mb-20">
+                    <div className="flex items-center gap-6 mb-10">
+                        <div className="h-px flex-grow bg-gradient-to-r from-transparent via-white/20 to-white/10"></div>
+                        <span className="font-mono text-primary text-xs tracking-[0.5em] uppercase whitespace-nowrap text-glow-red">
+                            Faculty Advisor
+                        </span>
+                        <div className="h-px flex-grow bg-gradient-to-l from-transparent via-white/20 to-white/10"></div>
+                    </div>
+
+                    <div className="relative group w-full mx-auto">
+                        {/* Outer Glow */}
+                        <div className="absolute -inset-1 bg-primary/10 rounded-2xl blur-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-700"></div>
+
+                        <div className="relative flex flex-col md:flex-row items-stretch bg-[#0a0a0a] border border-primary/40 rounded-2xl overflow-hidden shadow-[0_0_50px_rgba(0,0,0,0.5)] transition-all duration-500 hover:border-primary/70 md:h-[280px]">
+
+                            {/* Image Section - Framed Square */}
+                            <div className="relative flex-shrink-0 p-6 md:p-8 flex items-center justify-center">
+                                <div className="relative w-40 h-40 md:w-48 md:h-48 rounded-xl overflow-hidden border border-white/5 shadow-2xl">
+                                    <img
+                                        src={`${import.meta.env.BASE_URL}images/Team/drrex.jpg`}
+                                        alt={facultyAdvisor.name}
+                                        className="w-full h-full object-cover grayscale-[10%] group-hover:grayscale-0 transition-all duration-700"
+                                    />
+                                    {/* Subtle Overlay to match the mockup's lighting */}
+                                    <div className="absolute inset-x-0 bottom-0 h-1/4 bg-gradient-to-t from-black/20 to-transparent"></div>
+                                </div>
+                                {/* The 'Fade Out' effect from the mockup, placed behind or beside the frame */}
+                                <div className="absolute right-0 top-0 bottom-0 w-32 bg-gradient-to-r from-transparent to-[#0a0a0a] hidden md:block z-0 pointer-events-none"></div>
+                            </div>
+
+                            {/* Content Section */}
+                            <div className="flex-grow p-8 md:p-10 flex flex-col justify-center relative z-10">
+                                <h4 className="font-orbitron font-black text-3xl md:text-4xl tracking-tighter uppercase text-primary mb-3 text-glow-red">
+                                    {facultyAdvisor.name}
+                                </h4>
+
+                                <div className="flex flex-col gap-3">
+                                    <div className="flex flex-col gap-1">
+                                        <p className="text-xs font-mono text-white/80 uppercase tracking-widest font-bold">
+                                            <span className="text-white/40">Role:</span> {facultyAdvisor.role}
+                                        </p>
+                                    </div>
+
+                                    <div className="relative">
+                                        <p className="text-sm md:text-base text-white/60 leading-relaxed font-sans italic max-w-2xl">
+                                            "{facultyAdvisor.description}. Guiding the future of electric mobility with passion and expertise."
+                                        </p>
+                                    </div>
+                                </div>
+
+                                {/* Animated Accents */}
+                                <div className="absolute top-4 right-4 w-10 h-10 border-t-2 border-r-2 border-primary/20 group-hover:border-primary/60 transition-colors duration-500 rounded-tr-md"></div>
+                                <div className="absolute bottom-4 left-4 w-10 h-10 border-b-2 border-l-2 border-primary/20 group-hover:border-primary/60 transition-colors duration-500 rounded-bl-md hidden md:block"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                {/* Separator */}
+                <div className="flex items-center gap-4 mb-16">
+                    <div className="flex-1 h-px bg-gradient-to-r from-white/10 via-white/5 to-transparent"></div>
+                    <span className="font-mono text-[10px] text-primary tracking-[0.4em] uppercase font-bold">Team Members</span>
+                    <div className="flex-1 h-px bg-gradient-to-r from-transparent via-white/5 to-white/10"></div>
+                </div>
 
                 {/* Header and Controls */}
                 <div className="mb-20 flex flex-col gap-12">
@@ -84,7 +158,7 @@ const Team = () => {
                         <div>
                             <span className="font-mono text-primary text-xs tracking-[0.4em] uppercase mb-4 block text-glow-red">Elite Engineering Team</span>
                             <h2 className="text-5xl md:text-7xl font-black italic mb-4 uppercase text-white tracking-tighter">
-                                The <span className="text-white/20 outline-text">VRE</span> Crew
+                                The <span className="text-primary outline-text">VRE</span> Crew
                             </h2>
                             <p className="text-muted max-w-xl text-sm italic font-sans leading-relaxed">
                                 Our legacy of innovation, tracked through generations of engineers building

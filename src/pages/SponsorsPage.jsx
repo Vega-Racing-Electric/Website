@@ -15,7 +15,7 @@ const SponsorsPage = () => {
                 <div className="flex flex-col gap-2 mb-16 text-center md:text-left">
                     <span className="font-mono text-primary text-xs tracking-[0.4em] uppercase">Partnerships</span>
                     <h2 className="text-5xl md:text-7xl font-black italic tracking-tighter leading-tight">
-                        OUR <span className="text-white/20 outline-text">SPONSORS</span>
+                        OUR <span className="text-primary outline-text">SPONSORS</span>
                     </h2>
                     <p className="text-muted mt-4 max-w-2xl text-sm leading-relaxed">
                         We are incredibly grateful to our industry partners whose support, technology, and expertise make our journey possible.

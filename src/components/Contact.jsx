@@ -53,7 +53,7 @@ const Contact = () => {
                 <div className="flex flex-col gap-2 mb-16">
                     <span className="font-mono text-primary text-xs tracking-[0.4em] uppercase">Connect With Us</span>
                     <h2 className="text-5xl md:text-7xl font-black italic tracking-tighter leading-tight">
-                        GET IN <span className="text-white/20 outline-text">TOUCH</span>
+                        GET IN <span className="text-primary outline-text">TOUCH</span>
                     </h2>
                 </div>
 

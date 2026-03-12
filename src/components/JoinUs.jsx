@@ -20,7 +20,7 @@ const JoinUs = () => {
                     <span className="font-mono text-primary text-xs tracking-[0.4em] uppercase mb-4 block">Recruitment</span>
                     <h2 className="text-6xl md:text-8xl font-black italic tracking-tighter leading-tight mb-8">
                         PUSH YOUR <br />
-                        <span className="text-white/20 outline-text">LIMITS.</span>
+                        <span className="text-primary outline-text">LIMITS.</span>
                     </h2>
 
                     <p className="text-lg md:text-xl text-muted leading-relaxed max-w-2xl mb-12">

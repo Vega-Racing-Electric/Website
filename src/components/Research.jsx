@@ -105,7 +105,7 @@ const Research = () => {
                 <div className="flex flex-col gap-2 mb-16">
                     <span className="font-mono text-primary text-xs tracking-[0.4em] uppercase">Engineering Publication</span>
                     <h1 className="text-4xl md:text-6xl font-black italic tracking-tighter leading-tight max-w-5xl text-white">
-                        Development of <span className="text-white/20 outline-text">Electro-Thermal Model</span> for Field-Effect Transistor
+                        Development of <span className="text-primary outline-text">Electro-Thermal Model</span> for Field-Effect Transistor
                     </h1>
                     <p className="mt-4 font-orbitron font-bold text-sm tracking-widest text-muted uppercase">
                         By: Allen Denny, Dhrupad Vijay, Amartya S V, Neelkanth Kirloskar
@@ -141,7 +141,7 @@ const Research = () => {
                 <div className="flex flex-col gap-2 mb-16">
                     <span className="font-mono text-primary text-xs tracking-[0.4em] uppercase">Technical Modules</span>
                     <h2 className="text-4xl md:text-6xl font-black italic tracking-tighter uppercase text-white">
-                        Autonomous <span className="text-white/20 outline-text">& Advanced</span> Systems
+                        Autonomous <span className="text-primary outline-text">& Advanced</span> Systems
                     </h2>
                 </div>
 

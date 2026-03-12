@@ -116,7 +116,7 @@ const Achievements = () => {
                 <div className="flex flex-col items-center text-center gap-4 mb-24">
                     <span className="font-mono text-primary text-xs tracking-[0.5em] uppercase">Victory Lane</span>
                     <h1 className="text-5xl md:text-7xl font-black italic tracking-tighter uppercase leading-none text-white">
-                        VRE <span className="text-white/20 outline-text">Achievements</span>
+                        VRE <span className="text-primary outline-text">Achievements</span>
                     </h1>
                     <div className="w-24 h-1 bg-primary mt-4"></div>
                     <p className="max-w-xl text-muted text-sm md:text-base mt-4 font-sans leading-relaxed">
