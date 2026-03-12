@@ -41,7 +41,7 @@ const SponsorsPage = () => {
                             {/* Default Logo */}
                             <div className="relative z-10 w-full h-full flex flex-col items-center justify-center">
                                 <img
-                                    src={sponsor.src}
+                                    src={sponsor.src.startsWith('/') ? `${import.meta.env.BASE_URL}${sponsor.src.slice(1)}` : sponsor.src}
                                     alt={sponsor.name}
                                     className="max-w-[80%] max-h-[80%] object-contain opacity-70 group-hover:opacity-0 transition-opacity duration-300"
                                     onError={(e) => {
