@@ -82,7 +82,7 @@ const Footer = () => {
                 <div className="flex flex-col md:flex-row justify-between items-center pt-12 border-t border-white/5 gap-8">
                     <div className="flex flex-col items-center md:items-start gap-2">
                         <p className="text-[10px] font-mono text-muted/50 uppercase tracking-[0.2em]">
-                            © 2025 VEGA RACING ELECTRIC, PES UNIVERSITY. ALL RIGHTS RESERVED.
+                            © 2026 VEGA RACING ELECTRIC, PES UNIVERSITY. ALL RIGHTS RESERVED.
                         </p>
                         <p className="text-[8px] font-mono text-muted/30 uppercase tracking-[0.2em]">
                             Developed by Hitesh Pranav & Arjun Sharma - WebDev Team 2026
