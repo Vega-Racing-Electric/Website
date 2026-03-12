@@ -17,7 +17,7 @@ const Sponsors = () => {
                         <div key={i} className="flex-shrink-0 flex flex-col items-center gap-4 group">
                             <div className="h-16 md:h-24 w-32 md:w-48 bg-background rounded-sm flex items-center justify-center p-4 border border-white/5 transition-all duration-300">
                                 <img
-                                    src={sponsor.src}
+                                    src={sponsor.src.startsWith('/') ? `${import.meta.env.BASE_URL}${sponsor.src.slice(1)}` : sponsor.src}
                                     alt={sponsor.name}
                                     className="max-w-full max-h-full object-contain opacity-70 group-hover:opacity-100 transition-opacity duration-300"
                                     onError={(e) => {

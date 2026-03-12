@@ -162,7 +162,7 @@ const Team = () => {
                                     <div className="w-full h-full bg-neutral-900 flex items-center justify-center relative">
                                         {member.image ? (
                                             <img
-                                                src={member.image}
+                                                src={member.image.startsWith('/') ? `${import.meta.env.BASE_URL}${member.image.slice(1)}` : member.image}
                                                 alt={member.name}
                                                 className="w-full h-full object-cover absolute inset-0"
                                             />

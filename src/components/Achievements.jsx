@@ -12,7 +12,7 @@ const AchievementCard = ({ year, title, description, image, rank }) => {
                 {/* Image Section */}
                 <div className="relative mb-8 w-32 h-32 flex items-center justify-center p-4 bg-white/5 rounded-full border border-white/10 group-hover:scale-110 transition-transform duration-500">
                     <img
-                        src={image}
+                        src={image.startsWith('/') ? `${import.meta.env.BASE_URL}${image.slice(1)}` : `${import.meta.env.BASE_URL}${image}`}
                         alt={title}
                         className="w-full h-full object-contain filter grayscale group-hover:grayscale-0 transition-all duration-500"
                     />

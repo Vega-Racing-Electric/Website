@@ -14,7 +14,7 @@ const ResearchCard = ({ title, description, image, details }) => {
             {/* Background Image */}
             <div className="absolute inset-0 z-0">
                 <img
-                    src={image || "/images/Research3.png"}
+                    src={(image || "/images/Research3.png").startsWith('/') ? `${import.meta.env.BASE_URL}${(image || "/images/Research3.png").slice(1)}` : (image || "/images/Research3.png")}
                     alt={title}
                     className="w-full h-full object-cover filter transition-all duration-700 group-hover:scale-110 opacity-40 group-hover:opacity-60"
                 />
