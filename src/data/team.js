@@ -6,7 +6,6 @@ export const team = [
         subsystem: "Electrical",
         years: ["2023", "2024", "2025", "2026"],
         image: "/images/Team/placeholder.png",
-        description: "Joined the club in 2023 as a 1st year in the non-tech domain.Helped out in BPP. Then moved on to the Electrical domain from 2nd year onwards. Helped in the operations side mainly and was promoted to club head post FB25.",
         linkedin: "https://www.linkedin.com/in/kishoresshetty/",
         github: "",
         instagram: ""
@@ -18,7 +17,6 @@ export const team = [
         subsystem: "Mechanical",
         years: ["2022", "2023", "2024"],
         image: "/images/Team/placeholder.png",
-        description: "Joined the club in 2022 as a 1st year in the chassis domain then participated in my 1st online event where our club was placed 4th for the online design competiton made team captain in 2024. this followed with design and manufacturing  a whole new car to participate in FB25 as the team captain and succesfully made it to coimabatore where we one of the very few and 1st teams to clear accumulator inspection and handed over the club once we were. back from the competition",
         linkedin: "https://www.linkedin.com/in/rakshit-hegdal-231437b5",
         github: "",
         instagram: ""
@@ -30,7 +28,6 @@ export const team = [
         subsystem: "Mechanical",
         years: ["2018", "2019", "2020", "2021", "2022"],
         image: "/images/Team/placeholder.png",
-        description: "Prepared the car for fb2019, managed to keep vega afloat during covid, participated in formula green 2021, conducted bootstrap and presentations",
         linkedin: "https://www.linkedin.com/in/sreeharsha-bellary",
         github: "",
         instagram: ""
@@ -42,7 +39,6 @@ export const team = [
         subsystem: "Mechanical",
         years: ["2019", "2020", "2021", "2022", "2023"],
         image: "/images/Team/placeholder.png",
-        description: "Joined as a 1st year student in Chassis domain (2019), then became Chassis Lead & Team Captain. FG 21, FBV 23, Organized Bootstrap 2022",
         linkedin: "https://www.linkedin.com/in/shyle-shaju-4596a3237",
         github: "",
         instagram: ""
@@ -54,7 +50,6 @@ export const team = [
         subsystem: "Electrical",
         years: ["2020", "2021", "2022", "2023"],
         image: "/images/Team/placeholder.png",
-        description: "LiFePO4 battery pack design, participated in FG21, FBV23 and bootstrap 2022",
         linkedin: "https://www.linkedin.com/in/ashmitha-haralahally-ravishankar-151a03237",
         github: "",
         instagram: ""
@@ -66,7 +61,6 @@ export const team = [
         subsystem: "Electrical",
         years: ["2020", "2021", "2022", "2023"],
         image: "/images/Team/placeholder.png",
-        description: "LiFePO4 battery pack design, participated in FG21, FBV23 and bootstrap 2022",
         linkedin: "https://www.linkedin.com/in/prajwal-keshava-murthy",
         github: "",
         instagram: ""
@@ -78,7 +72,6 @@ export const team = [
         subsystem: "Electrical",
         years: ["2022", "2023", "2024"],
         image: "/images/Team/placeholder.png",
-        description: "Resurrected vega from the trenches, Modern day vega's Messiah",
         linkedin: "",
         github: "",
         instagram: ""
@@ -90,7 +83,6 @@ export const team = [
         subsystem: "Mechanical",
         years: ["2023", "2024", "2025"],
         image: "/images/Team/placeholder.png",
-        description: "Leading and Overlooking the Steering and VD for the participation in FB2025, Recruitments and Rejuvenating the club, Handling Billings, Finances and Reimbursements",
         linkedin: "https://www.linkedin.com/in/mrigank-mauli",
         github: "",
         instagram: ""
@@ -102,7 +94,6 @@ export const team = [
         subsystem: "Mechanical",
         years: ["2024", "2025"],
         image: "/images/Team/placeholder.png",
-        description: "Lead Development and Implementation of Charging Kart Brakes",
         linkedin: "",
         github: "",
         instagram: ""
@@ -114,7 +105,6 @@ export const team = [
         subsystem: "Mechanical",
         years: ["2024", "2025"],
         image: "/images/Team/placeholder.png",
-        description: "Technical Team Member specializing in Mechanical systems.",
         linkedin: "",
         github: "",
         instagram: ""
@@ -126,7 +116,6 @@ export const team = [
         subsystem: "Electrical",
         years: ["2024", "2025", "2026"],
         image: "/images/Team/chinmayhacharya.jpeg",
-        description: "Electric Lead driving electrical innovation.",
         linkedin: "",
         github: "",
         instagram: ""
@@ -138,19 +127,17 @@ export const team = [
         subsystem: "Electrical",
         years: ["2024", "2025", "2026"],
         image: "/images/Team/arnav.png",
-        description: "Team Captain leading VRE towards excellence.",
         linkedin: "",
         github: "",
         instagram: ""
     },
     {
         name: "Dakshin S",
-        role: "Team Manager",
-        rolesByYear: { "2024": "Technical Team Member", "2025": "Team Manager", "2026": "Autonomous Lead" },
+        role: "Autonomous Lead",
+        rolesByYear: { "2024": "Technical Team Member", "2025": "Technical Team Member", "2026": "Autonomous Lead" },
         subsystem: "Autonomous",
         years: ["2024", "2025", "2026"],
         image: "/images/Team/dakshin.jpeg",
-        description: "Team Manager ensuring smooth project execution.",
         linkedin: "",
         github: "",
         instagram: ""
@@ -162,7 +149,6 @@ export const team = [
         subsystem: "Mechanical",
         years: ["2024", "2025", "2026"],
         image: "/images/Team/placeholder.png",
-        description: "Technical Team Member specializing in Mechanical systems.",
         linkedin: "",
         github: "",
         instagram: ""
@@ -174,7 +160,6 @@ export const team = [
         subsystem: "Mechanical",
         years: ["2024", "2025", "2026"],
         image: "/images/Team/placeholder.png",
-        description: "Technical Team Member specializing in Mechanical systems.",
         linkedin: "",
         github: "",
         instagram: ""
@@ -186,7 +171,6 @@ export const team = [
         subsystem: "Mechanical",
         years: ["2024", "2025", "2026"],
         image: "/images/Team/ansh.jpg",
-        description: "Mechanical Lead overseeing hardware design.",
         linkedin: "",
         github: "",
         instagram: ""
@@ -198,7 +182,6 @@ export const team = [
         subsystem: "Electrical",
         years: ["2024", "2025"],
         image: "/images/Team/placeholder.png",
-        description: "High Voltage Lead managing the vehicleâ€™s high-power systems.",
         linkedin: "",
         github: "",
         instagram: ""
@@ -210,7 +193,6 @@ export const team = [
         subsystem: "Mechanical",
         years: ["2024", "2025"],
         image: "/images/Team/placeholder.png",
-        description: "Mechanical co head and steering head participated in FB25",
         linkedin: "",
         github: "",
         instagram: ""
@@ -222,7 +204,6 @@ export const team = [
         subsystem: "Electrical",
         years: ["2024", "2025", "2026"],
         image: "/images/Team/dhruvam.jpeg",
-        description: "Team Captain coordinating engineering efforts.",
         linkedin: "",
         github: "",
         instagram: ""
@@ -234,7 +215,6 @@ export const team = [
         subsystem: "Autonomous",
         years: ["2025", "2026"],
         image: "/images/Team/aditi.jpg",
-        description: "Technical Team Member focusing on Autonomy.",
         linkedin: "",
         github: "",
         instagram: ""
@@ -246,7 +226,6 @@ export const team = [
         subsystem: "Electrical",
         years: ["2026"],
         image: "/images/Team/placeholder.png",
-        description: "Technical Team Member focusing on Electrical systems.",
         linkedin: "",
         github: "",
         instagram: ""
@@ -258,7 +237,6 @@ export const team = [
         subsystem: "Electrical",
         years: ["2026"],
         image: "/images/Team/placeholder.png",
-        description: "Technical Team Member focusing on Electrical systems.",
         linkedin: "",
         github: "",
         instagram: ""
@@ -270,7 +248,6 @@ export const team = [
         subsystem: "Electrical",
         years: ["2026"],
         image: "/images/Team/placeholder.png",
-        description: "Technical Team Member focusing on Electrical systems.",
         linkedin: "",
         github: "",
         instagram: ""
@@ -282,7 +259,6 @@ export const team = [
         subsystem: "Electrical",
         years: ["2026"],
         image: "/images/Team/placeholder.png",
-        description: "Technical Team Member focusing on Electrical systems.",
         linkedin: "",
         github: "",
         instagram: ""
@@ -294,7 +270,6 @@ export const team = [
         subsystem: "Electrical",
         years: ["2026"],
         image: "/images/Team/placeholder.png",
-        description: "Technical Team Member focusing on Electrical systems.",
         linkedin: "",
         github: "",
         instagram: ""
@@ -306,7 +281,6 @@ export const team = [
         subsystem: "Electrical",
         years: ["2026"],
         image: "/images/Team/placeholder.png",
-        description: "Technical Team Member focusing on Electrical systems.",
         linkedin: "",
         github: "",
         instagram: ""
@@ -318,7 +292,6 @@ export const team = [
         subsystem: "Electrical",
         years: ["2026"],
         image: "/images/Team/placeholder.png",
-        description: "Technical Team Member focusing on Electrical systems.",
         linkedin: "",
         github: "",
         instagram: ""
@@ -330,7 +303,6 @@ export const team = [
         subsystem: "Electrical",
         years: ["2026"],
         image: "/images/Team/placeholder.png",
-        description: "Technical Team Member focusing on Electrical systems.",
         linkedin: "",
         github: "",
         instagram: ""
@@ -342,7 +314,6 @@ export const team = [
         subsystem: "Electrical",
         years: ["2026"],
         image: "/images/Team/placeholder.png",
-        description: "Technical Team Member focusing on Electrical systems.",
         linkedin: "",
         github: "",
         instagram: ""
@@ -354,7 +325,6 @@ export const team = [
         subsystem: "Electrical",
         years: ["2026"],
         image: "/images/Team/placeholder.png",
-        description: "Technical Team Member focusing on Electrical systems.",
         linkedin: "",
         github: "",
         instagram: ""
@@ -366,7 +336,6 @@ export const team = [
         subsystem: "Electrical",
         years: ["2026"],
         image: "/images/Team/placeholder.png",
-        description: "Technical Team Member focusing on Electrical systems.",
         linkedin: "",
         github: "",
         instagram: ""
@@ -378,7 +347,6 @@ export const team = [
         subsystem: "Mechanical",
         years: ["2026"],
         image: "/images/Team/placeholder.png",
-        description: "Technical Team Member specializing in Mechanical systems.",
         linkedin: "",
         github: "",
         instagram: ""
@@ -390,7 +358,6 @@ export const team = [
         subsystem: "Mechanical",
         years: ["2026"],
         image: "/images/Team/placeholder.png",
-        description: "Technical Team Member specializing in Mechanical systems.",
         linkedin: "",
         github: "",
         instagram: ""
@@ -402,7 +369,6 @@ export const team = [
         subsystem: "Mechanical",
         years: ["2026"],
         image: "/images/Team/placeholder.png",
-        description: "Technical Team Member specializing in Mechanical systems.",
         linkedin: "",
         github: "",
         instagram: ""
@@ -414,7 +380,6 @@ export const team = [
         subsystem: "Mechanical",
         years: ["2026"],
         image: "/images/Team/placeholder.png",
-        description: "Technical Team Member specializing in Mechanical systems.",
         linkedin: "",
         github: "",
         instagram: ""
@@ -426,7 +391,6 @@ export const team = [
         subsystem: "Autonomous",
         years: ["2026"],
         image: "/images/Team/placeholder.png",
-        description: "Technical Team Member focusing on Autonomy.",
         linkedin: "",
         github: "",
         instagram: ""
@@ -438,7 +402,6 @@ export const team = [
         subsystem: "Autonomous",
         years: ["2026"],
         image: "/images/Team/placeholder.png",
-        description: "Technical Team Member focusing on Autonomy.",
         linkedin: "",
         github: "",
         instagram: ""
@@ -450,7 +413,6 @@ export const team = [
         subsystem: "Autonomous",
         years: ["2026"],
         image: "/images/Team/placeholder.png",
-        description: "Technical Team Member focusing on Autonomy.",
         linkedin: "",
         github: "",
         instagram: ""
@@ -462,7 +424,6 @@ export const team = [
         subsystem: "Autonomous",
         years: ["2026"],
         image: "/images/Team/placeholder.png",
-        description: "Technical Team Member focusing on Autonomy.",
         linkedin: "",
         github: "",
         instagram: ""
@@ -474,7 +435,6 @@ export const team = [
         subsystem: "Autonomous",
         years: ["2026"],
         image: "/images/Team/placeholder.png",
-        description: "Technical Team Member focusing on Autonomy.",
         linkedin: "",
         github: "",
         instagram: ""
@@ -486,7 +446,6 @@ export const team = [
         subsystem: "Autonomous",
         years: ["2026"],
         image: "/images/Team/placeholder.png",
-        description: "Technical Team Member focusing on Autonomy.",
         linkedin: "",
         github: "",
         instagram: ""
@@ -498,7 +457,6 @@ export const team = [
         subsystem: "Autonomous",
         years: ["2026"],
         image: "/images/Team/placeholder.png",
-        description: "Technical Team Member focusing on Autonomy.",
         linkedin: "",
         github: "",
         instagram: ""
@@ -510,7 +468,6 @@ export const team = [
         subsystem: "Autonomous",
         years: ["2026"],
         image: "/images/Team/placeholder.png",
-        description: "Technical Team Member focusing on Autonomy.",
         linkedin: "",
         github: "",
         instagram: ""
@@ -522,7 +479,6 @@ export const team = [
         subsystem: "Autonomous",
         years: ["2026"],
         image: "/images/Team/placeholder.png",
-        description: "Technical Team Member focusing on Autonomy.",
         linkedin: "",
         github: "",
         instagram: ""
@@ -534,7 +490,6 @@ export const team = [
         subsystem: "Autonomous",
         years: ["2026"],
         image: "/images/Team/placeholder.png",
-        description: "Technical Team Member focusing on Autonomy.",
         linkedin: "",
         github: "",
         instagram: ""
@@ -546,7 +501,6 @@ export const team = [
         subsystem: "Non Tech",
         years: ["2026"],
         image: "/images/Team/placeholder.png",
-        description: "Core member of the Non-Technical management group.",
         linkedin: "",
         github: "",
         instagram: ""
@@ -558,7 +512,6 @@ export const team = [
         subsystem: "Non Tech",
         years: ["2026"],
         image: "/images/Team/hitesh.jpg",
-        description: "Core member focusing on Logistics, WebDev and management.",
         linkedin: "https://www.linkedin.com/in/hitesh-pranav-reddy-379371264/",
         github: "https://github.com/HiteshPranav267",
         instagram: "instagram.com/hitesh_26_7"
@@ -570,7 +523,6 @@ export const team = [
         subsystem: "Non Tech",
         years: ["2026"],
         image: "/images/Team/placeholder.png",
-        description: "Core member of the Non-Technical management group.",
         linkedin: "",
         github: "",
         instagram: ""
@@ -582,7 +534,6 @@ export const team = [
         subsystem: "Non Tech",
         years: ["2026"],
         image: "/images/Team/placeholder.png",
-        description: "Core member of the Non-Technical management group.",
         linkedin: "",
         github: "",
         instagram: ""
@@ -594,7 +545,6 @@ export const team = [
         subsystem: "Non Tech",
         years: ["2026"],
         image: "/images/Team/placeholder.png",
-        description: "Core member of the Non-Technical management group.",
         linkedin: "",
         github: "",
         instagram: ""
@@ -606,7 +556,6 @@ export const team = [
         subsystem: "Non Tech",
         years: ["2026"],
         image: "/images/Team/placeholder.png",
-        description: "Core member of the Non-Technical management group.",
         linkedin: "",
         github: "",
         instagram: ""
@@ -618,7 +567,6 @@ export const team = [
         subsystem: "Non Tech",
         years: ["2026"],
         image: "/images/Team/placeholder.png",
-        description: "Core member of the Non-Technical management group.",
         linkedin: "",
         github: "",
         instagram: ""
@@ -630,7 +578,6 @@ export const team = [
         subsystem: "Non Tech",
         years: ["2026"],
         image: "/images/Team/placeholder.png",
-        description: "Core member of the Non-Technical management group.",
         linkedin: "",
         github: "",
         instagram: ""
@@ -642,7 +589,6 @@ export const team = [
         subsystem: "Non Tech",
         years: ["2026"],
         image: "/images/Team/placeholder.png",
-        description: "Core member of the Non-Technical management group.",
         linkedin: "",
         github: "",
         instagram: ""

@@ -35,16 +35,20 @@ const Team = () => {
         // Priority 3: Alphabetical name A-Z (within same role + same year)
         const roleHierarchy = (role) => {
             const r = (role || '').toLowerCase();
-            if (r.includes('founder') || r.includes('head')) return 0;
+            if (r.includes('founder') || r.includes('head') || r.includes('captain') || r.includes('advisor')) return 0;
             if (r.includes('manager') || r.includes('vice captain')) return 1;
             if (r.includes('lead')) return 2;
             return 3; // Team Member, Technical Team Member, etc.
         };
 
         result.sort((a, b) => {
-            // 1. Role hierarchy (lower number = higher rank)
-            const rankA = roleHierarchy(a.role);
-            const rankB = roleHierarchy(b.role);
+            // Get role for current batch to determine rank
+            const roleA = a.rolesByYear && a.rolesByYear[batch] ? a.rolesByYear[batch] : a.role;
+            const roleB = b.rolesByYear && b.rolesByYear[batch] ? b.rolesByYear[batch] : b.role;
+
+            const rankA = roleHierarchy(roleA);
+            const rankB = roleHierarchy(roleB);
+
             if (rankA !== rankB) return rankA - rankB;
 
             // 2. Earliest start year first
@@ -290,9 +294,7 @@ const Team = () => {
                                         </span>
                                     </div>
 
-                                    <p className="text-xs text-white/50 leading-relaxed font-sans line-clamp-3 mb-6 flex-grow italic">
-                                        "{member.description}"
-                                    </p>
+
 
                                     <div className="pt-4 border-t border-white/5 mt-auto flex justify-between items-center opacity-40 group-hover:opacity-100 transition-opacity">
                                         <span className="text-[8px] font-mono tracking-[0.3em] text-muted uppercase">VRE LEGACY MEMBER</span>

@@ -72,7 +72,7 @@ try {
         const _subsystem = row[1] || "";
         const _years = (row[2] || "").split(',').map(y => y.trim()).filter(y => y);
         const _rolesRaw = (row[3] || "").split(',').map(r => r.trim()).filter(r => r);
-        const _description = (row[4] || "").replace(/"/g, '\\"');
+
         const _linkedin = row[5] || "";
         const _github = row[6] || "";
         const _instagram = row[7] || "";
@@ -97,7 +97,7 @@ try {
             subsystem: _subsystem,
             years: _years,
             image: _image,
-            description: _description,
+
             linkedin: _linkedin,
             github: _github,
             instagram: _instagram
@@ -122,7 +122,7 @@ try {
         jsContent += `        subsystem: "${member.subsystem}",\n`;
         jsContent += `        years: [${yearsStr}],\n`;
         jsContent += `        image: "${member.image}",\n`;
-        jsContent += `        description: "${member.description}",\n`;
+
         jsContent += `        linkedin: "${member.linkedin}",\n`;
         jsContent += `        github: "${member.github}",\n`;
         jsContent += `        instagram: "${member.instagram}"\n`;

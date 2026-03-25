@@ -34,8 +34,8 @@ const Navbar = () => {
         >
             <div className="container mx-auto px-6 flex justify-between items-center">
                 {/* Logo */}
-                <Link to="/" className="flex items-center group">
-                    <img src={logo} alt="Vega Racing Electric" className="h-10 transition-transform group-hover:scale-105" />
+                <Link to="/" className="flex items-center">
+                    <img src={logo} alt="Vega Racing Electric" className="h-10 transition-transform hover:scale-105" />
                 </Link>
 
                 {/* Desktop Nav */}
@@ -56,6 +56,7 @@ const Navbar = () => {
                     >
                         CONTACT US
                     </Link>
+                    <img src="/Website/pes_dark_logo.png" alt="PESU Logo" className="h-10 ml-4 hidden md:block" />
                 </div>
 
                 {/* Mobile Toggle */}
