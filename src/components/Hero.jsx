@@ -1,11 +1,31 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import CarViewer from './CarViewer';
 import { Link } from 'react-router-dom';
 
 const Hero = () => {
+    const [showScroll, setShowScroll] = useState(true);
+
     useEffect(() => {
         window.scrollTo(0, 0);
+
+        const handleScroll = () => {
+            if (window.scrollY > 50) {
+                setShowScroll(false);
+            } else {
+                setShowScroll(true);
+            }
+        };
+
+        window.addEventListener('scroll', handleScroll);
+        return () => window.removeEventListener('scroll', handleScroll);
     }, []);
+
+    const scrollToAbout = () => {
+        const aboutSection = document.getElementById('about-vre');
+        if (aboutSection) {
+            aboutSection.scrollIntoView({ behavior: 'smooth' });
+        }
+    };
 
     return (
         <div className="relative h-screen w-full overflow-hidden bg-[#0A0A0A]">
@@ -53,6 +73,21 @@ const Hero = () => {
 
             {/* Simple Background Accent */}
             <div className="absolute bottom-0 left-0 w-full h-1/3 bg-gradient-to-t from-black to-transparent z-10 pointer-events-none"></div>
+
+            {/* Scroll Down Button */}
+            <div 
+                className={`absolute bottom-10 left-1/2 -translate-x-1/2 z-50 transition-opacity duration-300 ${showScroll ? 'opacity-100 pointer-events-auto' : 'opacity-0 pointer-events-none'}`}
+            >
+                <button 
+                    onClick={scrollToAbout}
+                    className="flex items-center justify-center w-14 h-14 bg-primary rounded-full hover:bg-white text-white hover:text-primary transition-all shadow-xl animate-bounce"
+                    aria-label="Scroll to About"
+                >
+                    <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M19 14l-7 7m0 0l-7-7m7 7V3" />
+                    </svg>
+                </button>
+            </div>
 
         </div>
     );

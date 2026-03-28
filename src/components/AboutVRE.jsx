@@ -2,7 +2,7 @@ import React from 'react';
 
 const AboutVRE = () => {
     return (
-        <div className="relative py-24 bg-background overflow-hidden">
+        <div id="about-vre" className="relative py-24 bg-background overflow-hidden">
             <div className="container mx-auto px-6 relative z-10 flex flex-col md:flex-row items-center gap-12">
                 {/* Image Section */}
                 <div className="w-full md:w-1/3 flex justify-center">
