@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useMemo } from 'react';
-import { team } from '../data/team';
+import { team as localTeam } from '../data/team';
 import { Linkedin, Github, Instagram } from 'lucide-react';
 import { gsap } from 'gsap';
 
@@ -7,19 +7,40 @@ const Team = () => {
     // Toggles for Domain and Batch
     const [domain, setDomain] = useState('All');
     const [batch, setBatch] = useState('2026');
+    const [teamData, setTeamData] = useState(localTeam);
+
+    // Fetch team data from our private cPanel API
+    // This keeps the Google Sheet URL hidden and filters sensitive data
+    useEffect(() => {
+        const fetchTeamData = async () => {
+            try {
+                const response = await fetch('/api/get_team.php');
+                if (!response.ok) throw new Error('API fetch failed');
+                const data = await response.json();
+                if (data && data.length > 0) {
+                    setTeamData(data);
+                }
+            } catch (error) {
+                console.warn('Could not fetch from database, using local team data:', error);
+                setTeamData(localTeam);
+            }
+        };
+
+        fetchTeamData();
+    }, []);
 
     // Extract all unique years from the team data and sort descending
     const availableBatches = useMemo(() => {
-        const allYears = team.flatMap(m => m.years || []);
+        const allYears = teamData.flatMap(m => m.years || []);
         const uniqueYears = Array.from(new Set(allYears)).sort((a, b) => parseInt(b) - parseInt(a));
         return uniqueYears;
-    }, []);
+    }, [teamData]);
 
     const domains = ['All', 'Autonomous', 'Electrical', 'Mechanical', 'Non Tech'];
 
     // Filter and Sort Logic
     const filteredTeam = useMemo(() => {
-        let result = [...team];
+        let result = [...teamData];
 
         // 1. Filter by Batch (check if selected year is in member's years array)
         result = result.filter(m => m.years && m.years.includes(batch));

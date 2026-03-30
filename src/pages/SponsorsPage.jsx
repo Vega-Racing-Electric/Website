@@ -1,4 +1,5 @@
 import React, { useEffect } from 'react';
+import { Link } from 'react-router-dom';
 import { sponsors } from '../data/sponsors';
 
 const SponsorsPage = () => {
@@ -54,6 +55,13 @@ const SponsorsPage = () => {
                             </div>
                         </a>
                     ))}
+                </div>
+
+                {/* --- FOOTER CTA FOR SPONSORS --- */}
+                <div className="mt-32 pt-16 border-t border-white/5 text-center">
+                    <p className="font-mono text-xs md:text-sm text-muted tracking-widest leading-relaxed">
+                        For further information about sponsoring, <Link to="/contactus" className="text-primary font-bold hover:underline selection:text-white">contact us</Link>
+                    </p>
                 </div>
             </div>
         </div>

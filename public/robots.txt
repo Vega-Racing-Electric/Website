@@ -1,3 +1,11 @@
 # https://www.robotstxt.org/robotstxt.html
 User-agent: *
-Disallow:
+Disallow: /contactus
+Disallow: /admin
+
+# --- FOR FUTURE DEVELOPERS ---
+# Looking for something hidden or secret?
+# This page is specifically for our lead sponsors.
+# Warning: Legend says if you delete this line, the car 
+# will stop charging at 99%. Don't touch! XD
+# --- VRE Engineering Team ---
