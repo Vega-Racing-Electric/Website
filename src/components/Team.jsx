@@ -1,19 +1,21 @@
 import React, { useState, useEffect, useMemo } from 'react';
-import { team as localTeam } from '../data/team';
-import { Linkedin, Github, Instagram } from 'lucide-react';
+import { Linkedin, Github, Instagram, Mail } from 'lucide-react';
 import { gsap } from 'gsap';
 
 const Team = () => {
     // Toggles for Domain and Batch
     const [domain, setDomain] = useState('All');
     const [batch, setBatch] = useState('2026');
-    const [teamData, setTeamData] = useState(localTeam);
+    const [teamData, setTeamData] = useState([]);
+    const [isLoading, setIsLoading] = useState(true);
 
+    // Fetch team data from our private cPanel API
     // Fetch team data from our private cPanel API
     // This keeps the Google Sheet URL hidden and filters sensitive data
     useEffect(() => {
         const fetchTeamData = async () => {
             try {
+                // Secure PHP proxy fetch
                 const response = await fetch('/api/get_team.php');
                 if (!response.ok) throw new Error('API fetch failed');
                 const data = await response.json();
@@ -21,8 +23,10 @@ const Team = () => {
                     setTeamData(data);
                 }
             } catch (error) {
-                console.warn('Could not fetch from database, using local team data:', error);
-                setTeamData(localTeam);
+                console.error('Could not fetch team data:', error);
+                setTeamData([]);
+            } finally {
+                setIsLoading(false);
             }
         };
 
@@ -82,7 +86,7 @@ const Team = () => {
         });
 
         return result;
-    }, [domain, batch]);
+    }, [domain, batch, teamData]);
 
     useEffect(() => {
         gsap.fromTo(".member-card",
@@ -239,7 +243,15 @@ const Team = () => {
 
                 {/* Team Grid */}
                 <div className="team-grid grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8">
-                    {filteredTeam.length > 0 ? (
+                    {isLoading ? (
+                        <div className="col-span-full py-20 flex flex-col items-center justify-center gap-6">
+                            <div className="w-12 h-12 border-2 border-primary/20 border-t-primary rounded-full animate-spin"></div>
+                            <div className="text-center">
+                                <h3 className="font-orbitron text-xl font-black text-white tracking-widest mb-2 italic uppercase">Synchronizing</h3>
+                                <p className="font-mono text-[10px] text-muted tracking-widest uppercase">Fetching crew data from the cloud...</p>
+                            </div>
+                        </div>
+                    ) : filteredTeam.length > 0 ? (
                         filteredTeam.map((member, i) => (
                             <div key={`${member.name}-${i}`} className="member-card group relative flex flex-col bg-surface border border-white/5 rounded-sm overflow-hidden transition-all duration-500 hover:border-primary/40 hover:shadow-[0_0_30px_rgba(230,57,70,0.1)]">
 
@@ -261,7 +273,7 @@ const Team = () => {
                                     <div className="w-full h-full bg-neutral-900 flex items-center justify-center relative">
                                         {member.image ? (
                                             <img
-                                                src={member.image.startsWith('/') ? `${import.meta.env.BASE_URL}${member.image.slice(1)}` : member.image}
+                                                src={`${import.meta.env.BASE_URL}images/Team/${member.image}`}
                                                 alt={member.name}
                                                 className="w-full h-full object-cover absolute inset-0"
                                             />
@@ -277,6 +289,11 @@ const Team = () => {
 
                                     {/* Social Links Overlay */}
                                     <div className="absolute inset-0 flex items-center justify-center gap-4 z-20 opacity-0 transform translate-y-4 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-500">
+                                        {member.email && (
+                                            <a href={`mailto:${member.email}`} className="w-9 h-9 bg-white flex items-center justify-center rounded-full text-black hover:bg-primary hover:text-white transition-all shadow-lg active:scale-95">
+                                                <Mail size={16} strokeWidth={2.5} />
+                                            </a>
+                                        )}
                                         {member.linkedin && (
                                             <a href={member.linkedin} target="_blank" rel="noreferrer" className="w-9 h-9 bg-white flex items-center justify-center rounded-full text-black hover:bg-primary hover:text-white transition-all shadow-lg active:scale-95">
                                                 <Linkedin size={16} strokeWidth={2.5} />

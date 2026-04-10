@@ -1,73 +1,65 @@
 <?php
+// Secure PHP proxy for Vega Racing Electric - Team Data with High-Speed Caching
+// Prevents sensitive Google Sheets URLs from being exposed and avoids "Publish to Web" delay.
+
 header('Content-Type: application/json');
 header('Access-Control-Allow-Origin: *');
 
-/**
- * VEGA RACING ELECTRIC: SHEETS PROXY
- * This script fetches data from Google Sheets, strips sensitive columns (beyond column 7),
- * and serves it as clean JSON to the website.
- */
-
-// --- PASTE YOUR GOOGLE SHEET CSV LINK HERE ---
 $google_sheet_url = "https://docs.google.com/spreadsheets/d/e/2PACX-1vRlU5Q0ePJscfmMj1WeQX0pn_nFNAWA6yRA1kfMDtvTys0WLHHNoZJ-J806cjgMChj0C2vVqdi11Mon/pub?gid=22774327&single=true&output=csv";
+$cache_file = 'team_cache.json';
+$cache_time = 300; // Cache for 5 minutes (300 seconds)
 
-// Fetch the CSV
-$csvData = file_get_contents($google_sheet_url);
-if ($csvData === false) {
-    echo json_encode(["error" => "Fetch failed from Google Sheets"]);
+// 1. CHECK IF CACHE IS FRESH
+if (file_exists($cache_file) && (time() - filemtime($cache_file) < $cache_time)) {
+    echo file_get_contents($cache_file);
     exit;
 }
 
-// Convert CSV string to array rows
-$rows = array_map('str_getcsv', explode("\n", $csvData));
+// 2. FETCH NEW DATA (If cache is old or missing)
+$context = stream_context_create([
+    "http" => ["header" => "User-Agent: Mozilla/5.0 (VRE Team Fetcher)\r\n"]
+]);
 
-// Remove the header row
-$header = array_shift($rows); 
+$csvData = file_get_contents($google_sheet_url . "&t=" . time(), false, $context);
 
-$team = [];
-
-foreach ($rows as $row) {
-    // Skip row if Name (column 0) is empty
-    if (empty($row[0])) continue;
-
-    /**
-     * GOOGLE SHEET COLUMNS:
-     * 0: Name
-     * 1: Domain
-     * 2: Years Active (comma-separated: 2023, 2024)
-     * 3: Roles (comma-separated: Lead, Captain)
-     * 4: LinkedIn
-     * 5: GitHub
-     * 6: Instagram
-     * 7: Image
-     */
-
-    // Processing years and roles for the frontend batch logic
-    $yearsStr = (isset($row[2])) ? $row[2] : "";
-    $rolesStr = (isset($row[3])) ? $row[3] : "";
-
-    $yearsArr = array_map('trim', explode(',', $yearsStr));
-    $rolesArr = array_map('trim', explode(',', $rolesStr));
-    
-    // Map each year to its role (or fallback to the last role)
-    $rolesByYear = [];
-    foreach ($yearsArr as $idx => $year) {
-        $rolesByYear[$year] = isset($rolesArr[$idx]) ? $rolesArr[$idx] : (end($rolesArr) ?: "Team Member");
+if ($csvData === false) {
+    // If fetch fails, serve old cache as fallback if available
+    if (file_exists($cache_file)) {
+        echo file_get_contents($cache_file);
+    } else {
+        echo json_encode(["error" => "Could not reach database"]);
     }
-
-    // Curated output - any column beyond 7 is ignored
-    $team[] = [
-        "name" => $row[0],
-        "subsystem" => $row[1] ?? "",
-        "years" => $yearsArr,
-        "rolesByYear" => $rolesByYear,
-        "linkedin" => $row[4] ?? "",
-        "github" => $row[5] ?? "",
-        "instagram" => $row[6] ?? "",
-        "image" => $row[7] ?? "/images/Team/placeholder.png"
-    ];
+    exit;
 }
 
-// Return the curated result as JSON
-echo json_encode($team);
+// 3. PARSE AND FILTER CSV DATA
+$lines = explode("\n", str_replace("\r", "", $csvData));
+$team = [];
+
+// Skip the header row
+for ($i = 1; $i < count($lines); $i++) {
+    $row = str_getcsv($lines[$i]);
+    
+    // Ensure we have at least basic columns
+    if (count($row) < 5 || empty($row[0])) continue;
+
+    $member = [
+        "name"      => $row[0] ?? "",
+        "subsystem" => $row[1] ?? "",
+        "years"     => array_map('trim', explode(',', $row[2] ?? "")),
+        "role"      => $row[3] ?? "",
+        "linkedin"  => $row[4] ?? "",
+        "github"    => $row[5] ?? "",
+        "instagram" => $row[6] ?? "",
+        "image"     => $row[7] ?? "",
+        "email"     => $row[8] ?? "" // Assuming email is in Column I
+    ];
+    
+    $team[] = $member;
+}
+
+// 4. SAVE TO CACHE AND RETURN
+$json_output = json_encode($team);
+file_put_contents($cache_file, $json_output);
+echo $json_output;
 ?>

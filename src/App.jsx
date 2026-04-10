@@ -15,6 +15,7 @@ import JoinPage from './pages/JoinPage';
 import ContactPage from './pages/ContactPage';
 import Admin from './pages/Admin';
 import ExclusiveContact from './pages/ExclusiveContact';
+import NotFound from './pages/NotFound';
 
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
@@ -47,6 +48,7 @@ function App() {
                             <Route path="/join" element={<JoinPage />} />
                             <Route path="/admin" element={<Admin />} />
                             <Route path="/contactus" element={<ExclusiveContact />} />
+                            <Route path="*" element={<NotFound />} />
                         </Routes>
                     </main>
                     {!isSecretPage && <Footer />}

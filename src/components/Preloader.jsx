@@ -5,7 +5,7 @@ const Preloader = ({ onLoaded }) => {
   const [progress, setProgress] = useState(0);
 
   useEffect(() => {
-    // Fake progress bar (0 to 100 over ~2.5 seconds)
+    // 1. Progress Timer (Fake)
     const interval = setInterval(() => {
       setProgress((prev) => {
         if (prev >= 100) {
@@ -14,41 +14,34 @@ const Preloader = ({ onLoaded }) => {
         }
         return prev + 1;
       });
-    }, 25);
+    }, 20);
 
-    // Initial pulse logo animate in
+    // 2. SAFETY FAILSAFE (Force preloader to close after 3.5s no matter what)
+    const failsafe = setTimeout(() => {
+      onLoaded();
+    }, 3500);
+
+    // 3. Initial Animation
     gsap.fromTo(".loader-content",
       { scale: 0.9, opacity: 0 },
       { scale: 1, opacity: 1, duration: 1, ease: "power2.out" }
     );
 
-    // Split/wipe away when 100%
+    return () => {
+        clearInterval(interval);
+        clearTimeout(failsafe);
+    };
+  }, []);
+
+  // 4. Trigger Wipe-out when progress hits 100
+  useEffect(() => {
     if (progress === 100) {
-      const tl = gsap.timeline({
-        onComplete: onLoaded
-      });
-
-      // Split effect
-      tl.to(".loader-content", {
-        opacity: 0,
-        y: -20,
-        duration: 0.4,
-        ease: "power2.inOut"
-      })
-        .to(".preloader-top", {
-          y: "-100%",
-          duration: 0.8,
-          ease: "power4.inOut"
-        }, "split")
-        .to(".preloader-bottom", {
-          y: "100%",
-          duration: 0.8,
-          ease: "power4.inOut"
-        }, "split");
+      const tl = gsap.timeline({ onComplete: onLoaded });
+      tl.to(".loader-content", { opacity: 0, y: -20, duration: 0.4 })
+        .to(".preloader-top", { y: "-100%", duration: 0.8, ease: "power4.inOut" }, "split")
+        .to(".preloader-bottom", { y: "100%", duration: 0.8, ease: "power4.inOut" }, "split");
     }
-
-    return () => clearInterval(interval);
-  }, [progress === 100]);
+  }, [progress, onLoaded]);
 
   return (
     <div className="fixed inset-0 z-[100] bg-transparent pointer-events-none flex flex-col justify-center items-center">

@@ -1,0 +1,137 @@
+<?php
+// VRE: RAW CSV RESTORE SCRIPT (EXACT FORMAT)
+header('Content-Type: application/json');
+require_once 'config.php';
+
+// 1. CLEAR EXISTING DATA
+$conn->query("DROP TABLE IF EXISTS members");
+
+$conn->query("CREATE TABLE members (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    name VARCHAR(255),
+    subsystem VARCHAR(100),
+    years VARCHAR(255),
+    role VARCHAR(255),
+    website_role VARCHAR(100) DEFAULT 'Team Member',
+    linkedin VARCHAR(255),
+    github VARCHAR(255),
+    instagram VARCHAR(255),
+    image VARCHAR(255),
+    email VARCHAR(255),
+    password VARCHAR(255)
+)");
+
+// 2. INJECT ENTIRE ROSTER EXACTLY AS FORMATTED IN CSV
+$sql = "INSERT INTO members (name, subsystem, years, role, linkedin, github, instagram, image, email, password) VALUES
+('D Hitesh Pranav Reddy', 'Non Tech', '2026', 'Web Dev', 'https://www.linkedin.com/in/hitesh-pranav-reddy-379371264/', 'https://github.com/HiteshPranav267', 'instagram.com/hitesh_26_7', 'hitesh.jpg', 'dev@vre.pes.edu', 'admin'),
+('Kishore S Shetty', 'Electrical', '2023, 2024, 2025, 2026', 'Team Member, High Voltage Lead, Club Head, Student Advisor', 'https://www.linkedin.com/in/kishoresshetty/', '', '', 'placeholder.png', NULL, NULL),
+('Rakshit R Hegdal', 'Mechanical', '2022, 2023, 2024', 'Technical Team Member, Chassis Lead, Chassis Lead, Club Head', 'https://www.linkedin.com/in/rakshit-hegdal-231437b5', '', '', 'placeholder.png'),
+('Sreeharsha Bellary', 'Mechanical', '2018, 2019, 2020, 2021, 2022', 'Technical Team Member, Brakes and Wheels Lead, Electro-Mechanical Integration Lead, Battery Design Lead, Vice Captain', 'https://www.linkedin.com/in/sreeharsha-bellary', '', '', 'placeholder.png'),
+('Shyle Shaju', 'Mechanical', '2019, 2020, 2021, 2022, 2023', 'Technical Team Member, Chassis Lead, Chassis Lead, Club Head, Club Head', 'https://www.linkedin.com/in/shyle-shaju-4596a3237', '', '', 'placeholder.png'),
+('Ashmitha H R', 'Electrical', '2020, 2021, 2022, 2023', 'Technical Team Member, Technical Team Member, Electrical Lead, Electrical Lead', 'https://www.linkedin.com/in/ashmitha-haralahally-ravishankar-151a03237', '', '', 'placeholder.png'),
+('Prajwal K', 'Electrical', '2020, 2021, 2022, 2023', 'Technical Team Member, Technical Team Member, High Voltage Lead, High Voltage Lead', 'https://www.linkedin.com/in/prajwal-keshava-murthy', '', '', 'placeholder.png'),
+('Syed Sulaiman', 'Electrical', '2022, 2023, 2024', 'Technical Team Member, VCU Lead, Electrical Lead', '', '', '', 'placeholder.png'),
+('Mrigank Mauli', 'Mechanical', '2023, 2024', 'Technical Team Member, Steering Lead, Vehicle Dynamics Lead', 'https://www.linkedin.com/in/mrigank-mauli', '', '', 'placeholder.png'),
+('Gagandeep M', 'Mechanical', '2024, 2025', 'Technical Team Member, Technical Team Member', '', '', '', 'placeholder.png'),
+('Kovid Ghiya', 'Mechanical', '2024, 2025', 'Technical Team Member, Technical Team Member', '', '', '', 'placeholder.png'),
+('Chinmay H Acharya', 'Electrical', '2024, 2025, 2026', 'Technical Team Member, Low Voltage Lead, Electrical Lead', '', '', '', 'chinmayhacharya.jpeg'),
+('Arnav Rao', 'Electrical', '2024, 2025, 2026', 'Technical Team Member, Technical lead, Club Head', '', '', '', 'arnav.png'),
+('Dakshin S', 'Autonomous', '2024, 2025, 2026', 'Technical Team Member, Technical Team Member, Autonomous Lead', '', '', '', 'dakshin.jpeg'),
+('Rutvik', 'Mechanical', '2024, 2025, 2026', 'Technical Team Member, Technical Team Member, Powertrain Lead', '', '', '', 'placeholder.png'),
+('Shiva', 'Mechanical', '2024, 2025, 2026', 'Technical Team Member, Brakes Lead, Brakes Lead', '', '', '', 'placeholder.png'),
+('Ansh', 'Mechanical', '2024, 2025, 2026', 'Technical Team Member, Suspension Lead, Mechanical Lead', '', '', '', 'ansh.jpg'),
+('Vishal V', 'Electrical', '2024, 2025', 'Technical Team Member, High Voltage Lead', '', '', '', 'placeholder.png'),
+('Dhanush Rao K', 'Mechanical', '2024, 2025', 'Technical Team Member, Mechanical Lead', '', '', '', 'placeholder.png'),
+('Dhruva M', 'Electrical', '2024, 2025, 2026', 'Technical Team Member, Electrical Lead, Club Head', '', '', '', 'dhruvam.jpeg'),
+('Aditi Chandra', 'Autonomous', '2025, 2026', 'Team Member, Technical Team Member', '', '', '', 'aditi.jpg'),
+('Aditya Padvetnaya', 'Electrical', '2026', 'Technical Team Member', '', '', '', 'placeholder.png'),
+('Harsh Patnaik', 'Electrical', '2026', 'Technical Team Member', '', '', '', 'placeholder.png'),
+('Chinmay Benni', 'Electrical', '2026', 'Technical Team Member', '', '', '', 'placeholder.png'),
+('Aditya M Sarangi', 'Electrical', '2026', 'Technical Team Member', '', '', '', 'placeholder.png'),
+('Anish', 'Electrical', '2026', 'Technical Team Member', '', '', '', 'placeholder.png'),
+('Ashwin Manikandan', 'Electrical', '2026', 'Technical Team Member', '', '', '', 'placeholder.png'),
+('Eesha Chennamale', 'Electrical', '2026', 'Technical Team Member', '', '', '', 'placeholder.png'),
+('Nikhil Baktha', 'Electrical', '2026', 'Technical Team Member', '', '', '', 'placeholder.png'),
+('Nivedith', 'Electrical', '2026', 'Technical Team Member', '', '', '', 'placeholder.png'),
+('Samith S', 'Electrical', '2026', 'Technical Team Member', '', '', '', 'placeholder.png'),
+('Sreeraksha', 'Electrical', '2026', 'Technical Team Member', '', '', '', 'placeholder.png'),
+('Bhuvan', 'Mechanical', '2026', 'Technical Team Member', '', '', '', 'placeholder.png'),
+('Pavan DC', 'Mechanical', '2026', 'Technical Team Member', '', '', '', 'placeholder.png'),
+('Skanda', 'Mechanical', '2026', 'Technical Team Member', '', '', '', 'placeholder.png'),
+('Vansh', 'Mechanical', '2026', 'Technical Team Member', '', '', '', 'placeholder.png'),
+('Charnesh', 'Autonomous', '2026', 'Technical Team Member', '', '', '', 'placeholder.png'),
+('Aman Khandelwal', 'Autonomous', '2026', 'Technical Team Member', '', '', '', 'placeholder.png'),
+('Edwin Himax', 'Autonomous', '2026', 'Technical Team Member', '', '', '', 'placeholder.png'),
+('Pratham', 'Autonomous', '2026', 'Technical Team Member', '', '', '', 'placeholder.png'),
+('Riya H', 'Autonomous', '2026', 'Technical Team Member', '', '', '', 'placeholder.png'),
+('Raj', 'Autonomous', '2026', 'Technical Team Member', '', '', '', 'placeholder.png'),
+('Anuj Srijan', 'Autonomous', '2026', 'Technical Team Member', '', '', '', 'placeholder.png'),
+('Maneesh Sanpala', 'Autonomous', '2026', 'Technical Team Member', '', '', '', 'placeholder.png'),
+('Shreyas Pai', 'Autonomous', '2026', 'Technical Team Member', '', '', '', 'placeholder.png'),
+('Vishnu Anand', 'Autonomous', '2026', 'Technical Team Member', '', '', '', 'placeholder.png'),
+('Arjun Sharma', 'Non Tech', '2026', 'Team Member', '', '', '', 'placeholder.png'),
+('D Hitesh Pranav Reddy', 'Non Tech', '2026', 'Team Member', 'https://www.linkedin.com/in/hitesh-pranav-reddy-379371264/', 'https://github.com/HiteshPranav267', 'instagram.com/hitesh_26_7', 'hitesh.jpg'),
+('Rakshit R Hegdal', 'Mechanical', '2022, 2023, 2024', 'Technical Team Member, Chassis Lead, Chassis Lead, Club Head', 'https://www.linkedin.com/in/rakshit-hegdal-231437b5', '', '', 'placeholder.png', NULL, NULL),
+('Sreeharsha Bellary', 'Mechanical', '2018, 2019, 2020, 2021, 2022', 'Technical Team Member, Brakes and Wheels Lead, Electro-Mechanical Integration Lead, Battery Design Lead, Vice Captain', 'https://www.linkedin.com/in/sreeharsha-bellary', '', '', 'placeholder.png', NULL, NULL),
+('Shyle Shaju', 'Mechanical', '2019, 2020, 2021, 2022, 2023', 'Technical Team Member, Chassis Lead, Chassis Lead, Club Head, Club Head', 'https://www.linkedin.com/in/shyle-shaju-4596a3237', '', '', 'placeholder.png', NULL, NULL),
+('Ashmitha H R', 'Electrical', '2020, 2021, 2022, 2023', 'Technical Team Member, Technical Team Member, Electrical Lead, Electrical Lead', 'https://www.linkedin.com/in/ashmitha-haralahally-ravishankar-151a03237', '', '', 'placeholder.png', NULL, NULL),
+('Prajwal K', 'Electrical', '2020, 2021, 2022, 2023', 'Technical Team Member, Technical Team Member, High Voltage Lead, High Voltage Lead', 'https://www.linkedin.com/in/prajwal-keshava-murthy', '', '', 'placeholder.png', NULL, NULL),
+('Syed Sulaiman', 'Electrical', '2022, 2023, 2024', 'Technical Team Member, VCU Lead, Electrical Lead', '', '', '', 'placeholder.png', NULL, NULL),
+('Mrigank Mauli', 'Mechanical', '2023, 2024', 'Technical Team Member, Steering Lead, Vehicle Dynamics Lead', 'https://www.linkedin.com/in/mrigank-mauli', '', '', 'placeholder.png', NULL, NULL),
+('Gagandeep M', 'Mechanical', '2024, 2025', 'Technical Team Member, Technical Team Member', '', '', '', 'placeholder.png', NULL, NULL),
+('Kovid Ghiya', 'Mechanical', '2024, 2025', 'Technical Team Member, Technical Team Member', '', '', '', 'placeholder.png', NULL, NULL),
+('Chinmay H Acharya', 'Electrical', '2024, 2025, 2026', 'Technical Team Member, Low Voltage Lead, Electrical Lead', '', '', '', 'chinmayhacharya.jpeg', NULL, NULL),
+('Arnav Rao', 'Electrical', '2024, 2025, 2026', 'Technical Team Member, Technical lead, Club Head', '', '', '', 'arnav.png', NULL, NULL),
+('Dakshin S', 'Autonomous', '2024, 2025, 2026', 'Technical Team Member, Technical Team Member, Autonomous Lead', '', '', '', 'dakshin.jpeg', NULL, NULL),
+('Rutvik', 'Mechanical', '2024, 2025, 2026', 'Technical Team Member, Technical Team Member, Powertrain Lead', '', '', '', 'placeholder.png', NULL, NULL),
+('Shiva', 'Mechanical', '2024, 2025, 2026', 'Technical Team Member, Brakes Lead, Brakes Lead', '', '', '', 'placeholder.png', NULL, NULL),
+('Ansh', 'Mechanical', '2024, 2025, 2026', 'Technical Team Member, Suspension Lead, Mechanical Lead', '', '', '', 'ansh.jpg', NULL, NULL),
+('Vishal V', 'Electrical', '2024, 2025', 'Technical Team Member, High Voltage Lead', '', '', '', 'placeholder.png', NULL, NULL),
+('Dhanush Rao K', 'Mechanical', '2024, 2025', 'Technical Team Member, Mechanical Lead', '', '', '', 'placeholder.png', NULL, NULL),
+('Dhruva M', 'Electrical', '2024, 2025, 2026', 'Technical Team Member, Electrical Lead, Club Head', '', '', '', 'dhruvam.jpeg', NULL, NULL),
+('Aditi Chandra', 'Autonomous', '2025, 2026', 'Team Member, Technical Team Member', '', '', '', 'aditi.jpg', NULL, NULL),
+('Aditya Padvetnaya', 'Electrical', '2026', 'Technical Team Member', '', '', '', 'placeholder.png', NULL, NULL),
+('Harsh Patnaik', 'Electrical', '2026', 'Technical Team Member', '', '', '', 'placeholder.png', NULL, NULL),
+('Chinmay Benni', 'Electrical', '2026', 'Technical Team Member', '', '', '', 'placeholder.png', NULL, NULL),
+('Aditya M Sarangi', 'Electrical', '2026', 'Technical Team Member', '', '', '', 'placeholder.png', NULL, NULL),
+('Anish', 'Electrical', '2026', 'Technical Team Member', '', '', '', 'placeholder.png', NULL, NULL),
+('Ashwin Manikandan', 'Electrical', '2026', 'Technical Team Member', '', '', '', 'placeholder.png', NULL, NULL),
+('Eesha Chennamale', 'Electrical', '2026', 'Technical Team Member', '', '', '', 'placeholder.png', NULL, NULL),
+('Nikhil Baktha', 'Electrical', '2026', 'Technical Team Member', '', '', '', 'placeholder.png', NULL, NULL),
+('Nivedith', 'Electrical', '2026', 'Technical Team Member', '', '', '', 'placeholder.png', NULL, NULL),
+('Samith S', 'Electrical', '2026', 'Technical Team Member', '', '', '', 'placeholder.png', NULL, NULL),
+('Sreeraksha', 'Electrical', '2026', 'Technical Team Member', '', '', '', 'placeholder.png', NULL, NULL),
+('Bhuvan', 'Mechanical', '2026', 'Technical Team Member', '', '', '', 'placeholder.png', NULL, NULL),
+('Pavan DC', 'Mechanical', '2026', 'Technical Team Member', '', '', '', 'placeholder.png', NULL, NULL),
+('Skanda', 'Mechanical', '2026', 'Technical Team Member', '', '', '', 'placeholder.png', NULL, NULL),
+('Vansh', 'Mechanical', '2026', 'Technical Team Member', '', '', '', 'placeholder.png', NULL, NULL),
+('Charnesh', 'Autonomous', '2026', 'Technical Team Member', '', '', '', 'placeholder.png', NULL, NULL),
+('Aman Khandelwal', 'Autonomous', '2026', 'Technical Team Member', '', '', '', 'placeholder.png', NULL, NULL),
+('Edwin Himax', 'Autonomous', '2026', 'Technical Team Member', '', '', '', 'placeholder.png', NULL, NULL),
+('Pratham', 'Autonomous', '2026', 'Technical Team Member', '', '', '', 'placeholder.png', NULL, NULL),
+('Riya H', 'Autonomous', '2026', 'Technical Team Member', '', '', '', 'placeholder.png', NULL, NULL),
+('Raj', 'Autonomous', '2026', 'Technical Team Member', '', '', '', 'placeholder.png', NULL, NULL),
+('Anuj Srijan', 'Autonomous', '2026', 'Technical Team Member', '', '', '', 'placeholder.png', NULL, NULL),
+('Maneesh Sanpala', 'Autonomous', '2026', 'Technical Team Member', '', '', '', 'placeholder.png', NULL, NULL),
+('Shreyas Pai', 'Autonomous', '2026', 'Technical Team Member', '', '', '', 'placeholder.png', NULL, NULL),
+('Vishnu Anand', 'Autonomous', '2026', 'Technical Team Member', '', '', '', 'placeholder.png', NULL, NULL),
+('Arjun Sharma', 'Non Tech', '2026', 'Team Member', '', '', '', 'placeholder.png', NULL, NULL),
+('D Hitesh Pranav Reddy', 'Non Tech', '2026', 'Team Member', 'https://www.linkedin.com/in/hitesh-pranav-reddy-379371264/', 'https://github.com/HiteshPranav267', 'instagram.com/hitesh_26_7', 'hitesh.jpg', NULL, NULL),
+('Sudev', 'Non Tech', '2026', 'Team Member', '', '', '', 'placeholder.png', NULL, NULL),
+('Ahaspath', 'Non Tech', '2026', 'Team Member', '', '', '', 'placeholder.png', NULL, NULL),
+('Chirantan', 'Non Tech', '2026', 'Team Member', '', '', '', 'placeholder.png', NULL, NULL),
+('Mithil', 'Non Tech', '2026', 'Team Member', '', '', '', 'placeholder.png', NULL, NULL),
+('Gargi', 'Non Tech', '2026', 'Team Member', '', '', '', 'placeholder.png', NULL, NULL),
+('Saidhavi', 'Non Tech', '2026', 'Team Member', '', '', '', 'placeholder.png', NULL, NULL),
+('Shamith', 'Non Tech', '2026', 'Team Member', '', '', '', 'placeholder.png', NULL, NULL)";
+
+if ($conn->multi_query($sql)) {
+    // Wait for multi_query to finish then UPDATE master dev to Web Dev
+    while ($conn->next_result()) {;} 
+    $conn->query("UPDATE members SET website_role = 'Web Dev' WHERE email = 'dev@vre.pes.edu'");
+    echo json_encode(["status" => "success", "message" => "ALL DATA RESTORED! MASTER DEV PROMOTED TO WEB DEV."]);
+} else {
+    echo json_encode(["status" => "error", "message" => $conn->error]);
+}
+$conn->close();
+?>
